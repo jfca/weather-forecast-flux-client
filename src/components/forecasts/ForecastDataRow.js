@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {buildIdFromDateString, parseTime, val_na} from "../../../utils/helperFuncs";
+import {buildIdFromDateString, parseTime, val_na} from "../../utils/helperFuncs";
 
 const ForecastDataRow = ({ forecasts }) => {
-    return (forecasts.map((forecast,i) => {
+    return (forecasts.map((forecast, i) => {
         return (
-            <li key={'fdr' + i + buildIdFromDateString(forecasts.datetime)} id="fdr">
-                <div id="hour">
-                    { val_na(parseTime(forecast.datetime)) }
-                </div>
-                <div id="icon">
+            <tr key={i} id={'forecast-data-row' + buildIdFromDateString(forecast.datetime)}>
+                <td id="hour" className="center-align">
+                    {val_na(parseTime(forecast.datetime))}
+                </td>
+                <td id="icon" className="center-align">
                     <img src={forecast.iconurl} alt={val_na(forecast.alt_desc)}/>
-                </div>
-                <div id="min-temp">{ val_na(forecast.min_temp) }</div>
-                <div id="max-temp">{ val_na(forecast.max_temp) }</div>
-            </li>
+                </td>
+                <td id="min-temp" className="center-align">{val_na(forecast.min_temp)}</td>
+                <td id="max-temp" className="center-align">{val_na(forecast.max_temp)}</td>.
+            </tr>
         )
     }))
 };

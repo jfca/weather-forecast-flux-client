@@ -3,64 +3,8 @@ import ReactDOM from 'react-dom';
 import ForecastDataRow from "../src/components/forecasts/ForecastDataRow";
 import ForecastHeadingRow from "../src/components/forecasts/ForecastHeadingRow";
 import ForecastSection from "../src/components/forecasts/ForecastSection";
-import {
-    convertKelvinToCelsius, getIconDescription, buildWeatherIconURL,
-    parseTime, buildIdFromDateString, parseDate
-} from '../utils/helperFuncs';
-
-const forecasts = [
-    {
-        id:1581584400,
-        datetime: "2020-02-13 09:00:00",
-        iconurl: "http://openweathermap.org/img/wn/03d.png",
-        alt_desc: "scattered clouds",
-        min_temp: convertKelvinToCelsius(293.59),
-        max_temp: convertKelvinToCelsius(293.64)
-    },
-    {
-        id:1581566400,
-        datetime: "2020-02-13 12:00:00",
-        iconurl: "http://openweathermap.org/img/wn/03n.png",
-        alt_desc: "scattered clouds",
-        min_temp: convertKelvinToCelsius(293.49),
-        max_temp: convertKelvinToCelsius(293.53)
-    },
-    {
-        id:1581642000,
-        datetime: "2020-02-14 09:00:00",
-        iconurl: "http://openweathermap.org/img/wn/03n.png",
-        alt_desc: "scattered clouds",
-        min_temp: convertKelvinToCelsius(293.49),
-        max_temp: convertKelvinToCelsius(293.53)
-    },
-    {
-        id:1581652800,
-        datetime: "2020-02-14 12:00:00",
-        iconurl: "http://openweathermap.org/img/wn/03n.png",
-        alt_desc: "scattered clouds",
-        min_temp: convertKelvinToCelsius(293.49),
-        max_temp: convertKelvinToCelsius(293.53)
-    },
-    {
-        id:1581663600,
-        datetime: "2020-02-14 15:00:00",
-        iconurl: "http://openweathermap.org/img/wn/03n.png",
-        alt_desc: "scattered clouds",
-        min_temp: convertKelvinToCelsius(293.49),
-        max_temp: convertKelvinToCelsius(293.53)
-    }
-];
-
-const empty_forecasts = [
-    {
-        id:"",
-        datetime: "",
-        iconurl: "",
-        alt_desc: "",
-        min_temp: "",
-        max_temp: ""
-    }
-];
+import {parseTime, buildIdFromDateString, parseDate} from '../src/utils/helperFuncs';
+import {forecasts, empty_forecasts} from "../src/testData";
 
 describe('ForecastDataRow', () => {
     let forecast;
@@ -72,9 +16,10 @@ describe('ForecastDataRow', () => {
 
     const render = component => ReactDOM.render(component, container);
 
-    it('renders a li with the correct id', () => {
-        render(<ForecastDataRow forecasts={forecasts.slice(0,2)} />);
-        expect(container.querySelector('#fdr')).not.toBeNull();
+    it('renders a tr with the correct id', () => {
+        render(<ForecastDataRow forecasts={forecasts.slice(0,1)} />);
+        expect(container.querySelector('#forecast-data-row' +
+            buildIdFromDateString(forecasts.slice(0, 1)[0].datetime))).not.toBeNull();
     });
 
     it('renders the hourly time of the forecast', () => {
@@ -103,8 +48,8 @@ describe('ForecastDataRow', () => {
     it('renders a missing div wrapper and img element', () => {
         render(<ForecastDataRow forecasts={empty_forecasts}/>);
         expect(container.querySelector('#icon')).not.toBeNull();
-        expect(container.querySelector('div>img')).not.toBeNull();
-        expect(container.querySelector('div>img').getAttribute('alt'))
+        expect(container.querySelector('td>img')).not.toBeNull();
+        expect(container.querySelector('td>img').getAttribute('alt'))
             .toMatch('NA');
     });
 
@@ -147,9 +92,10 @@ describe('ForecastHeadingRow', () => {
 
     const render = component => ReactDOM.render(component, container);
 
-    it('renders a li with the correct id', () => {
+    it('renders a td with the correct id', () => {
+        const key_id = 'fhr' + buildIdFromDateString(forecasts.slice(0, 1)[0].datetime);
         render(<ForecastHeadingRow daily_forecasts={forecasts.slice(0, 2)} />);
-        expect(container.querySelector('#fhr')).not.toBeNull();
+        expect(container.querySelector(`#${key_id}`)).not.toBeNull();
     });
 
     it('renders the date in a heading', () => {
@@ -170,7 +116,6 @@ describe('ForecastHeadingRow', () => {
 });
 
 describe('ForecastSection', () => {
-    let forecast;
     let container;
 
     beforeEach(() => {
@@ -181,15 +126,13 @@ describe('ForecastSection', () => {
 
     it('renders a div with the correct id', () => {
         render(<ForecastSection forecasts={forecasts} />);
-        expect(container.querySelector('#fs')).not.toBeNull();
+        expect(container.querySelector('#forecast-section')).not.toBeNull();
     });
 
-    //@TODO create array sort function that orders forecasts by date then time
-    it('renders a list with 1 forecast header and 2 data row components', () => {
+    it('renders a table with 1 forecast heading and 2 table rows', () => {
         render(<ForecastSection forecasts={forecasts} />);
-        expect(container.querySelector('#fs>ul>li>h1')).not.toBeNull();
-        expect(container.querySelectorAll('#fs>ul>li>h1')).toHaveLength(1);
-        expect(container.querySelector('#fs>ul>li+li')).not.toBeNull();
-        expect(container.querySelectorAll('#fs>ul>li')).toHaveLength(3);
+        expect(container.querySelector('table#forecast-section>tbody>tr>td')).not.toBeNull();
+        expect(container.querySelectorAll('table#forecast-section>tbody>tr>td'))
+            .toHaveLength(24);
     });
 });
