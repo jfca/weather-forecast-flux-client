@@ -1,0 +1,49 @@
+@each $colour_name, $colour in $colours {
+  @each $colour_type, $colour_value in $colour {
+    @if $colour_type == "base" {
+      .#{$colour_name} {
+        background-color: $colour_value !important;
+      }
+      .#{$colour_name}-text {
+        color: $colour_value !important;
+      }
+    }
+    @else if $colour_name != "shades" {
+      .#{$colour_name}.#{$colour_type} {
+        background-color: $colour_value !important;
+      }
+      .#{$colour_name}-text.text-#{$colour_type} {
+        color: $colour_value !important;
+      }
+    }
+  }
+}
+
+//// Shade classes
+//@each $colour, $colour_value in $shades {
+//  .#{$colour} {
+//    background-color: $colour_value !important;
+//  }
+//  .#{$colour}-text {
+//    color: $colour_value !important;
+//  }
+//}
+
+@function colour($colour, $type) {
+  @if map-has-key($colours, $colour) {
+    $curr_colour: map-get($colours, $colour);
+    @if map-has-key($curr_colour, $type) {
+      @return map-get($curr_colour, $type);
+    }
+  }
+  @warn "Unknown `#{$colour}` - `#{$type}` in $colours.";
+  @return null;
+}
+
+@function set-text-colour($colour) {
+  @if(lightness($colour) > 50) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}

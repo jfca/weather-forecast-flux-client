@@ -1,0 +1,27 @@
+#home::before {
+  content: '';
+  background: $bg-snow-image no-repeat center center/cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#home {
+  background-color: rgba($colour-neutral-dark, $background-opacity);
+  height: 100vh;
+  position: relative;
+  border-bottom: 1px solid $colour-neutral-dark;
+  text-align: center;
+
+  h1 {
+    font-size: 5rem;
+    padding: 2rem;
+  }
+
+  p {
+    font-size: larger;
+  }
+}

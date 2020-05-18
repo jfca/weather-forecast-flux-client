@@ -1,0 +1,8 @@
+.forecast-daily-row {
+  display: grid;
+  grid-template-columns: auto repeat(8, 1fr);
+  column-gap: 1rem;
+  justify-content: center;
+  border-radius: 15px;
+  @extend .bg-dark;
+}

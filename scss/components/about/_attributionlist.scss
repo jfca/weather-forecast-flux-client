@@ -1,0 +1,14 @@
+#att-list-container {
+  border-radius: 15px;
+  border: 1px solid $colour-neutral-dark;
+  @extend .p-1;
+  @extend .m-1;
+  @extend .bg-dark;
+
+  #att-list {
+    p {
+      //color: $colour-neutral-dark;
+      margin: 0;
+    }
+  }
+}

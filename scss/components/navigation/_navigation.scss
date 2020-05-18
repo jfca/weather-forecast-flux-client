@@ -1,0 +1,29 @@
+#navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  li {
+    height: 100%;
+    align-self: center;
+    padding: 1.2rem 0.5rem;
+
+    a {
+      text-decoration: none;
+      color: #ffffff;
+      border-bottom: 3px transparent solid;
+      padding-bottom: 0.5rem;
+      transition: border-color 0.5s;
+
+      &:hover {
+        border-color: colour('secondary', 'base');
+      }
+
+      &.current {
+        border-color: colour('secondary', 'base');
+      }
+    }
+  }
+}

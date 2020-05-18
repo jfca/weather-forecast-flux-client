@@ -1,0 +1,35 @@
+#weathermap-container {
+  box-sizing: border-box;
+  height: calc(96% - (#{$header-height} + #{$footer-height}));
+  //height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  background-color: $colour-neutral-dark;
+  border: 1px solid $colour-neutral-dark;
+  @extend .p-1;
+  @extend .m-1;
+  //margin-top: $header-height;
+  //margin-bottom: $footer-height;
+
+  #map {
+    box-sizing: border-box;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    border: 1px solid $colour-neutral-dark;
+    line-height: 1.2rem;
+    @extend .p-1;
+    z-index: 0;
+
+    .legend {
+      font-size: 1.2rem;
+      color: colour('secondary', 'base');
+    }
+
+    .popup {
+      font-size: 1rem;
+      line-height: 1.1rem;
+    }
+  }
+}

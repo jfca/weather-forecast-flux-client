@@ -1,0 +1,36 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100vh;
+  background-color: colour('primary', 'base');
+}
+
+a {
+  text-decoration: none;
+  color: colour('secondary', 'base');
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Shadows Into Light', cursive;
+  text-transform: uppercase;
+  //color: colour('primary','base');
+}

@@ -1,0 +1,30 @@
+.forecast-hourly-col {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  align-items: center;
+  border-left: 1px solid colour('secondary', 'base');
+  //color: $colour-neutral-light;
+  text-align: center;
+  font-size: 1.2rem;
+  //margin: 0 auto;
+
+  .current-forecast-time {
+    @extend .mx-1;
+  }
+
+  .current-forecast-weather-icon {
+      //color: $colour-neutral-dark;
+      @extend .mx-1;
+  }
+
+  .current-forecast-current-temp {
+    color: colour('primary', 'lighten-2');
+    font-size: 1.5rem;
+    @extend .mx-1;
+  }
+
+  .current-forecast-atmosphere {
+    @extend .mx-1;
+  }
+}

@@ -1,0 +1,7 @@
+#current-forecast {
+  @extend .grid-rows-5;
+  row-gap: 1rem;
+  @extend .bg-primary;
+  @extend .p-1;
+  margin-bottom: $footer-height;
+}
