@@ -1,55 +1,51 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment} from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import 'materialize-css/dist/css/materialize.min.css';
-import M from 'materialize-css/dist/js/materialize.min';
+import Header from "./components/layout/Header";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import CurrentWeather from "./components/pages/CurrentWeather";
+import WeatherMaps from "./components/pages/WeatherMaps";
+
+import CurrentWeatherState from "./context/currentweather/CurrentWeatherState";
+import ForecastState from "./context/forecasts/ForecastState";
+
 import './App.css';
-import {currentweather, forecasts, countries, cities} from "./testData";
-import LocationSection from "./components/locations/LocationSection";
-import CurrentWeatherSection from "./components/currentweather/CurrentWeatherSection";
-import ForecastSection from "./components/forecasts/ForecastSection";
-import SelectBtn from "./components/layout/SelectBtn";
-import MapSection from "./components/map/MapSection";
-import LocationSelectModal from "./components/locations/LocationSelectModal";
+import Footer from "./components/layout/Footer";
+import SettingsState from "./context/settings/SettingsState";
+import ForecastLocationState from "./context/forecastlocation/ForecastLocationState";
+import WeatherMapsState from "./context/weathermaps/WeatherMapsState";
+import PrivateRoute from "./components/routing/PrivateRoute";
+
+//@TODO create a help section for user documentation
 
 const  App = () => {
-    const [currentCity, setCurrentCity] = useState('7533612'); //Id value
-    const [currentCountry, setCurrentCountry] = useState('344'); //Id value
-
-      // Init Materialze CSS
-      useEffect(() => {
-        M.AutoInit();
-      });
-
-    const handleCurrentCity = id => {
-        setCurrentCity(id);
-    };
-
-    const handleCurrentCountry = code => {
-        setCurrentCountry(code);
-    };
-
-  return (
-    <Fragment>
-        <div className="container">
-            <SelectBtn/>
-            <MapSection city={cities.byId[currentCity]}/>
-            <LocationSection
-                country={countries.byId[currentCountry]}
-                city={cities.byId[currentCity]}
-            />
-            <CurrentWeatherSection currentforecast={currentweather}/>
-            <ForecastSection forecasts={forecasts}/>
-            <LocationSelectModal
-                selectedCountry={currentCountry}
-                selectedCity={currentCity}
-                countries={countries}
-                cities={cities}
-                handleCurrentCountry={handleCurrentCountry}
-                handleCurrentCity={handleCurrentCity}
-            />
-        </div>
-    </Fragment>
-  );
-}
+    return (
+        <SettingsState>
+            <ForecastLocationState>
+                <CurrentWeatherState>
+                    <ForecastState>
+                        <WeatherMapsState>
+                            <Router>
+                                <Fragment>
+                                    <Header/>
+                                    <div className="container">
+                                        <Switch>
+                                            <PrivateRoute exact path='/' component={Home}/>
+                                            <Route exact path='/current' component={CurrentWeather}/>
+                                            <Route exact path='/maps' component={WeatherMaps}/>
+                                            <Route exact path='/about' component={About}/>
+                                        </Switch>
+                                    </div>
+                                    <Footer/>
+                                </Fragment>
+                            </Router>
+                        </WeatherMapsState>
+                    </ForecastState>
+                </CurrentWeatherState>
+            </ForecastLocationState>
+        </SettingsState>
+    );
+};
 
 export default App;

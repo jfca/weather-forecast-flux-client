@@ -1,0 +1,122 @@
+{
+  "countries": [
+    {
+      "name": "Hong Kong Special Administrative Region",
+      "alpha-2": "HK",
+      "country-code": "344"
+    },
+    {
+      "name": "Hungary",
+      "alpha-2": "HU",
+      "country-code": "348"
+    },
+    {
+      "name": "Iceland",
+      "alpha-2": "IS",
+      "country-code": "352"
+    }
+  ],
+  "cities": [
+    {
+      "id": 7533612,
+      "name": "Kowloon City",
+      "country": "HK",
+      "coord": {
+          "lon": 114.191208,
+          "lat": 22.328659
+      }
+    },
+    {
+      "id": 1818833,
+      "name": "Sheung Wan",
+      "country": "HK",
+      "coord": {
+          "lon": 114.149597,
+          "lat": 22.283831
+      }
+    },
+    {
+      "id": 1818209,
+      "name": "Tsuen Wan",
+      "country": "HK",
+      "coord": {
+        "lon": 114.099998,
+        "lat": 22.366671
+      }
+    }
+  ],
+  "currentweather": [
+    {
+      "avg_temp": 293.7,
+      "short_desc": "Clouds",
+      "description": "scattered clouds",
+      "humidity": 83,
+      "winddegree": 40,
+      "windspeed": 4.1,
+      "iconcode": "03d"
+    }
+  ],
+  "empty_currentweather": [
+    {
+      "avg_temp": "",
+      "short_desc": "",
+      "description": "",
+      "humidity": "",
+      "winddegree": "",
+      "windspeed": "",
+      "iconcode": ""
+    }
+  ],
+  "forecasts": [
+    {
+      "id":1581584400,
+      "datetime": "2020-02-13 09:00:00",
+      "iconcode": "03d",
+      "alt_desc": "scattered clouds",
+      "min_temp": 293.59,
+      "max_temp": 293.64
+    },
+    {
+      "id":1581566400,
+      "datetime": "2020-02-13 12:00:00",
+      "iconcode": "03n",
+      "alt_desc": "scattered clouds",
+      "min_temp": 293.49,
+      "max_temp": 293.53
+    },
+    {
+      "id":1581642000,
+      "datetime": "2020-02-14 09:00:00",
+      "iconcode": "03n",
+      "alt_desc": "scattered clouds",
+      "min_temp": 293.49,
+      "max_temp": 293.53
+    },
+    {
+      "id":1581652800,
+      "datetime": "2020-02-14 12:00:00",
+      "iconcode": "03n",
+      "alt_desc": "scattered clouds",
+      "min_temp": 293.49,
+      "max_temp": 293.53
+    },
+    {
+      "id":1581663600,
+      "datetime": "2020-02-14 15:00:00",
+      "iconcode": "03n",
+      "alt_desc": "scattered clouds",
+      "min_temp": 293.49,
+      "max_temp": 293.53
+    }
+  ],
+  "empty_forecasts": [
+    {
+      "id":"",
+      "datetime": "",
+      "iconcode": "",
+      "alt_desc": "",
+      "min_temp": "",
+      "max_temp": ""
+    }
+  ]
+}
