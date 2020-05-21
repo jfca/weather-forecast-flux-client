@@ -1,11 +1,11 @@
 import React, {Fragment, useContext} from 'react';
-import ForecastLocationContext from "../../context/forecastlocation/forecastlocationContext";
+import LocationContext from "../../context/forecastlocation/locationContext";
 import SettingsContext from "../../context/settings/settingsContext";
 
 const ForecastLocation = () => {
     const settingsContext = useContext(SettingsContext);
     const { iconClasses } = settingsContext;
-    const forecastlocationContext = useContext(ForecastLocationContext);
+    const forecastlocationContext = useContext(LocationContext);
     const { currentLocation } = forecastlocationContext;
 
     return (

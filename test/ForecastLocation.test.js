@@ -15,7 +15,7 @@ describe('ForecastLocation', () => {
 
     const render = component => ReactDOM.render(component, container);
 
-    it('renders an icon for the current weathermaps', () => {
+    it('renders an icon for the current maps', () => {
         render(
             <MemoryRouter>
                 <ForecastLocation countryCode={countryCode} cityName={cityName} />

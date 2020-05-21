@@ -13,8 +13,8 @@ import ForecastState from "./context/forecasts/ForecastState";
 import './App.css';
 import Footer from "./components/layout/Footer";
 import SettingsState from "./context/settings/SettingsState";
-import ForecastLocationState from "./context/forecastlocation/ForecastLocationState";
-import WeatherMapsState from "./context/weathermaps/WeatherMapsState";
+import LocationState from "./context/forecastlocation/LocationState";
+import MapsState from "./context/maps/MapsState";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 //@TODO create a help section for user documentation
@@ -22,10 +22,10 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 const  App = () => {
     return (
         <SettingsState>
-            <ForecastLocationState>
+            <LocationState>
                 <CurrentWeatherState>
                     <ForecastState>
-                        <WeatherMapsState>
+                        <MapsState>
                             <Router>
                                 <Fragment>
                                     <Header/>
@@ -40,10 +40,10 @@ const  App = () => {
                                     <Footer/>
                                 </Fragment>
                             </Router>
-                        </WeatherMapsState>
+                        </MapsState>
                     </ForecastState>
                 </CurrentWeatherState>
-            </ForecastLocationState>
+            </LocationState>
         </SettingsState>
     );
 };

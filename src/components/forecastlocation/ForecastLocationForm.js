@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import ForecastLocationContext from "../../context/forecastlocation/forecastlocationContext";
+import LocationContext from "../../context/forecastlocation/locationContext";
 
 //@TODO show results in list as user types
 //@TODO group cities by country code in <optgroup>s
 
 const ForecastLocationForm = ({ icon, placeholder }) => {
-    const forecastlocationContext = useContext(ForecastLocationContext);
+    const forecastlocationContext = useContext(LocationContext);
     const { currentLocation, setCurrentLocation } = forecastlocationContext;
 
     useEffect(() => {

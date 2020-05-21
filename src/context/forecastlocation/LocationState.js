@@ -1,7 +1,7 @@
 import React, {useReducer} from "react";
 import axios from 'axios';
-import ForecastLocationContext from './forecastlocationContext';
-import forecastlocationReducer from './forecastlocationReducer';
+import LocationContext from './locationContext';
+import forecastlocationReducer from './locationReducer';
 import {
     GET_CITY_INFO,
     CLEAR_CURRENT_LOCATION,
@@ -38,7 +38,7 @@ import {
 //      }
 // }
 
-const ForecastLocationState = props => {
+const LocationState = props => {
     const initialState = {
         currentLocation: null,
         defaultLocation: {
@@ -49,7 +49,8 @@ const ForecastLocationState = props => {
             lon: -76.014273
         },
         cities: null,
-        error: null
+        error: null,
+        loading: true
     };
 
     const [state, dispatch] = useReducer(forecastlocationReducer, initialState);
@@ -123,17 +124,19 @@ const ForecastLocationState = props => {
     // CLEAR_CURRENT_LOCATION
 
     return (
-        <ForecastLocationContext.Provider
+        <LocationContext.Provider
             value={{
                 currentLocation: state.currentLocation,
                 defaultLocation: state.defaultLocation,
                 cities: state.cities,
+                error: state.error,
+                loading: state.loading,
                 getCities,
                 setCurrentLocation
             }}>
             {props.children}
-        </ForecastLocationContext.Provider>
+        </LocationContext.Provider>
     )
 };
 
-export default ForecastLocationState;
+export default LocationState;

@@ -1,13 +1,13 @@
 import React, {useReducer} from "react";
 import axios from 'axios';
-import WeatherMapsContext from './weathermapsContext'; //@TODO context object capitalized
-import weathermapsReducer from './weathermapsReducer'; //@TODO reducer object camel case
+import MapsContext from './mapsContext'; //@TODO context object capitalized
+import mapsReducer from './mapsReducer'; //@TODO reducer object camel case
 import {
     GET_CITY_MARKERS
 } from "../types";
 
 //@TODO add state object here
-const WeatherMapsState = props => {
+const MapsState = props => {
     const initialState = {
         cityMarkers: null,
         defaultCountryCode: 'CA',
@@ -16,7 +16,7 @@ const WeatherMapsState = props => {
         loading: true
     };
 
-    const [state, dispatch] = useReducer(weathermapsReducer, initialState);
+    const [state, dispatch] = useReducer(mapsReducer, initialState);
 
     //Add action functions here
     //GET_CITY_MARKERS
@@ -51,14 +51,14 @@ const WeatherMapsState = props => {
     };
 
     return (
-        <WeatherMapsContext.Provider
+        <MapsContext.Provider
             value={{
                 cityMarkers: state.cityMarkers,
                 getCityMarkers
             }}>
             {props.children}
-        </WeatherMapsContext.Provider>
+        </MapsContext.Provider>
     )
 };
 
-export default WeatherMapsState;
+export default MapsState;

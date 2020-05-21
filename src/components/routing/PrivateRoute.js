@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import {Route, Redirect} from "react-router-dom";
-import ForecastLocationContext from "../../context/forecastlocation/forecastlocationContext";
+import LocationContext from "../../context/forecastlocation/locationContext";
 
 const PrivateRoute = ({ component: Component, ...rest}) => {
-    const forecastlocationContext = useContext(ForecastLocationContext);
+    const forecastlocationContext = useContext(LocationContext);
     const { currentLocation } = forecastlocationContext;
 
     return (

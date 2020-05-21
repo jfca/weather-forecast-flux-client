@@ -2,8 +2,8 @@ import React, {useContext, useEffect, useRef} from 'react';
 import L from "leaflet";
 import { OPENWEATHER_API_KEY } from '../../utils/constants';
 import CurrentWeatherContext from "../../context/currentweather/currentweatherContext";
-import WeathermapsContext from "../../context/weathermaps/weathermapsContext";
-import ForecastLocationContext from "../../context/forecastlocation/forecastlocationContext";
+import MapsContext from "../../context/maps/mapsContext";
+import LocationContext from "../../context/forecastlocation/locationContext";
 
 // @TODO add weather condition legends to each condition type
 // @TODO refactor tilelayers
@@ -12,9 +12,9 @@ import ForecastLocationContext from "../../context/forecastlocation/forecastloca
 const WeatherMap = () => {
     //@TODO merge city DB from weathermap and population
     //@TODO show cities based on currentLocation lat/lon
-    const weathermapsContext = useContext(WeathermapsContext);
+    const weathermapsContext = useContext(MapsContext);
     const { getCityMarkers } = weathermapsContext;
-    const forecastlocationContext = useContext(ForecastLocationContext);
+    const forecastlocationContext = useContext(LocationContext);
     const { currentLocation, defaultLocation, setCurrentLocation } = forecastlocationContext;
 
     // Build color-primary-base layers
@@ -145,11 +145,12 @@ const WeatherMap = () => {
             console.log(weathermapsContext.cityMarkers);
             Object.values(weathermapsContext.cityMarkers).map(city => {
                 const popupStr = `<span class="popup">${city.name.trimStart()}, ${city.country}</span>`;
-                L.marker([city.lat, city.lon]).bindPopup(popupStr).addTo(markerLayerRef.current);
+                L.marker([city.lat, city.lon])
+                    .bindPopup(popupStr)
+                    .addTo(markerLayerRef.current);
             });
             controlRef.current.addOverlay(
-                markerLayerRef.current,
-                '<span class="legend">Cities</span>'
+                markerLayerRef.current, '<span class="legend">Cities</span>'
             );
         }
         // eslint-disable-next-line
