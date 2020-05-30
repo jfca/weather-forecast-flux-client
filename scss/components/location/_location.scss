@@ -1,0 +1,11 @@
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__icon {
+    font-size: 2rem;
+    color: colour('white', 'base');
+    @extend .mx-05;
+  }
+}

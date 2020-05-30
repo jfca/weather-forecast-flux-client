@@ -13,7 +13,7 @@ import ForecastState from "./context/forecasts/ForecastState";
 import './App.css';
 import Footer from "./components/layout/Footer";
 import SettingsState from "./context/settings/SettingsState";
-import LocationState from "./context/forecastlocation/LocationState";
+import LocationState from "./context/location/LocationState";
 import MapsState from "./context/maps/MapsState";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
@@ -31,7 +31,8 @@ const  App = () => {
                                     <Header/>
                                     <div className="container">
                                         <Switch>
-                                            <PrivateRoute exact path='/' component={Home}/>
+                                            {/*<PrivateRoute exact path='/' component={Home}/>*/}
+                                            <Route exact path='/' component={Home}/>
                                             <Route exact path='/current' component={CurrentWeather}/>
                                             <Route exact path='/maps' component={WeatherMaps}/>
                                             <Route exact path='/about' component={About}/>

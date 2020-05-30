@@ -1,12 +1,13 @@
 // Current temp & atmosphere
-#current-temp-icon {
-  justify-self: flex-end;
-  @extend .white-text;
-}
+.current-temp {
 
-#avg-temp {
-  justify-self: flex-start;
-  font-size: 15rem;
-  line-height: 15rem;
-  @extend .title-uc
+  &__icon {
+    justify-self: flex-end;
+  }
+
+  &__temp {
+    justify-self: flex-start;
+    font-size: 15rem;
+    line-height: 15rem;
+  }
 }

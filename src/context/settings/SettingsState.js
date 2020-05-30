@@ -12,7 +12,7 @@ const SettingsState = props => {
     const initialState = {
         appVersion: null,
         iconClasses: {
-            forecastLocationIcon: 'fas fa-map-marker-alt',
+            locationIcon: 'fas fa-map-marker-alt',
         },
         atmosphereUnits: {
             windspeed: 'm/s',

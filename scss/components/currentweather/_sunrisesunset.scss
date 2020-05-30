@@ -1,17 +1,10 @@
 // Sunrise & sunset
 .sunrise-sunset {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  i {
-    color: #ffffff;
-  }
-
-  span {
-    font-size: 2rem;
+  &__time {
     color: colour('primary', 'lighten-2');
-    @extend .mx-1;
   }
 }

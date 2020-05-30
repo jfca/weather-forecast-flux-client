@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { MemoryRouter } from 'react-router-dom';
-import ForecastLocationForm from "../src/components/forecastlocation/ForecastLocationForm";
+import LocationForm from "../src/components/location/LocationForm";
 
-describe('ForecastLocationForm', () => {
+describe('LocationForm', () => {
     let container;
 
     beforeEach(() => {
@@ -15,7 +15,7 @@ describe('ForecastLocationForm', () => {
     it('renders an icon for the searchinput field', () => {
         render(
             <MemoryRouter>
-                <ForecastLocationForm />
+                <LocationForm />
             </MemoryRouter>
         );
         expect(container.querySelector('#search-form-input-container i')).not.toBeNull();
@@ -26,7 +26,7 @@ describe('ForecastLocationForm', () => {
     it('renders an input field to search for a city name', () => {
         render(
             <MemoryRouter>
-                <ForecastLocationForm/>
+                <LocationForm/>
             </MemoryRouter>
         );
         expect(container.querySelector('#city-search')).not.toBeNull();

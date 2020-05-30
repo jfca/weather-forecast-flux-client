@@ -16,13 +16,14 @@
 // 4. Layout
 @import 'layout/header',
   'layout/footer',
-'components/navigation/navigation';
+  'layout/spinner';
 
 // 5. Components
 @import 'components/navigation/mainmenu',
-'components/forecastlocation/forecastlocationform',
+'components/navigation/navigation',
+'components/location/locationform',
 'components/currentweather/currentweatherdetails',
-'components/forecastlocation/forecastlocation',
+'components/location/location',
 'components/currentweather/currentdate',
 'components/currentweather/highLowFeelsLike',
 'components/currentweather/currenttemp',

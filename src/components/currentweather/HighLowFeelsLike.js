@@ -13,18 +13,18 @@ const HighLowFeelsLike = (
     }) => {
     return (
         <Fragment>
-            <p>
-                <i className={lowtempIcon} title="low temperature"></i>
-                <span>{convertKelvinToCelsius(lowtempVal)}</span>
-            </p>
-            <p>
-                <i className={feelslikeIcon} title="feels like temperature"></i>
-                <span>{convertKelvinToCelsius(feelslikeVal)}</span>
-            </p>
-            <p>
-                <i className={hightempIcon} title="high temperature"></i>
-                <span>{convertKelvinToCelsius(hightempVal)}</span>
-            </p>
+            <div className="mx-5">
+                <i className={`${lowtempIcon} text-white`} title="low temperature"></i>
+                <span className="ml-1 title-uc text-35">{convertKelvinToCelsius(lowtempVal)}</span>
+            </div>
+            <div className="mx-5">
+                <i className={`${feelslikeIcon} text-white`} title="feels like temperature"></i>
+                <span className="ml-1 title-uc text-35">{convertKelvinToCelsius(feelslikeVal)}</span>
+            </div>
+            <div className="mx-5">
+                <i className={`${hightempIcon} text-white`} title="high temperature"></i>
+                <span className="ml-1 title-uc text-35">{convertKelvinToCelsius(hightempVal)}</span>
+            </div>
         </Fragment>
     );
 };

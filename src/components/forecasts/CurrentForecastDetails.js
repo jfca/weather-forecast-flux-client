@@ -57,7 +57,7 @@ const CurrentForecastDetails = props => {
     }
 
     return (
-        <section id="current-forecast">
+        <section className="grid-rows-5 grid-gap-1 bg-primary p-1">
             {parseForecasts(forecasts.list).map((forecast) => (
                     <ForecastDailyRow
                         key={forecast.dateHeader.toString()}

@@ -9,10 +9,10 @@ const CurrentDate = ({ currentDate }) => {
 
     return (
         <Fragment>
-            <p id="current-date">
+            <h1>
                 {val_na(new Intl.DateTimeFormat(theme.locale, theme.intlDateOptions)
                     .format(secToMill(currentDate)))}
-            </p>
+            </h1>
         </Fragment>
     );
 };

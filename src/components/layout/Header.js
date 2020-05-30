@@ -1,14 +1,14 @@
 import React, {useContext} from 'react';
 import Navigation from "../navigation/Navigation";
-import ForecastLocationForm from "../forecastlocation/ForecastLocationForm";
-import ForecastLocation from "../forecastlocation/ForecastLocation";
+import LocationForm from "../location/LocationForm";
+import Location from "../location/Location";
 
 const Header = props => {
     return (
-        <header id="app-header">
-            <div id="app-header-wrapper">
-                <ForecastLocationForm/>
-                <ForecastLocation/>
+        <header className="app-header">
+            <div className="app-header__container">
+                <LocationForm/>
+                <Location/>
                 <Navigation/>
             </div>
         </header>

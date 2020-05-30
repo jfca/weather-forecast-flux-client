@@ -18,17 +18,36 @@ const MapsState = props => {
 
     const [state, dispatch] = useReducer(mapsReducer, initialState);
 
+     const getCurrentLocationInfo = async (searchTerm) => {
+        console.log(typeof searchTerm);
+        let query = null;
+        const distance = 50;
+        switch (typeof searchTerm) {
+            case "string":
+                const [ city, country ] = searchTerm.split(',');
+                query = `?city=${city}&country=${country}`;
+                console.log(query);
+                return `api/cities/city/name/${query}`;
+            case "number":
+                return `api/cities/city/id/${searchTerm}`;
+            case "object":
+                const { lon, lat } = searchTerm;
+                query = `?lon=${lon}&lat=${lat}&distance=${distance}`;
+                console.log(query);
+                return `api/cities/area/${query}`;
+            default:
+                return null;
+        }
+
+    };
+
     //Add action functions here
     //GET_CITY_MARKERS
-    const getCityMarkers = async (countryCode) => {
+    const getCityMarkers = async (searchParam) => {
         try {
-            if (countryCode === undefined) {
-                countryCode = `${state.defaultCountryCode}`;
-                // name = state.defaultCityName;
-                // name = state.defaultCountryCode;
-                // name = 'a,a,a';
-            }
-            const res = await axios.get(`api/cities/countrycode/${countryCode}`);
+            const url = await getCurrentLocationInfo(searchParam);
+            const res = await axios.get(url);
+            console.log(res.data);
             const cities_res = res.data.reduce((acc, cur) => (
                 {
                     ...acc,
@@ -37,7 +56,8 @@ const MapsState = props => {
                         name: cur.name,
                         country: cur.country,
                         lat: cur.coord.lat,
-                        lon: cur.coord.lon
+                        lon: cur.coord.lon,
+                        location: cur.location
                         //@TODO add other population, capitol city, prov. city, etc.
                     }
                 }), {});

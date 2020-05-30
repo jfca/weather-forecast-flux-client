@@ -6,7 +6,7 @@ import {secToMill} from "../../utils/helperFuncs";
 
 const ForecastDailyRow = ({forecastDate, hourlyForecasts}) => {
     return (
-        <div className="forecast-daily-row">
+        <div className="forecast-daily-row bg-dark">
             <ForecastDateHeading forecastDate={forecastDate} />
             {hourlyForecasts.map(forecast => (
                 <ForecastHourlyColumn key={new Date(secToMill(forecast.dt)).getHours().toString()} forecast={forecast} />

@@ -8,13 +8,13 @@ import {
 
 const CurrentTemp = ({weatherIcon, avgTemp}) => {
     return (
-        <Fragment>
+        <div className="current-temp">
             <i id="current-temp-icon"
-               className={getFontAwesomeIcon(weatherIcon, '8')}
+               className={`current-temp__icon text-white ${getFontAwesomeIcon(weatherIcon, '8')}`}
                title={getIconDescriptionFromCode(weatherIcon)}>
             </i>
-            <p id="avg-temp">{convertKelvinToCelsius(avgTemp)}</p>
-        </Fragment>
+            <span id="avg-temp" className="current-temp__temp title-uc ml-3">{convertKelvinToCelsius(avgTemp)}</span>
+        </div>
     );
 };
 

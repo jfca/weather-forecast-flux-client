@@ -38,18 +38,22 @@ $secondary: (
         "darken-2": #180B00,
 );
 
-$white: ( "base": #fff );
-$colour-neutral-light: #f9fafa;
-$neutral-light: ( "base": $colour-neutral-light );
-$colour-neutral-dark: #353e3f;
-$neutral-dark: ( "base": $colour-neutral-dark );
+$neutral: (
+        "light": #f9fafa,
+        "dark": #353e3f
+);
+
+$white: ( "base": #ffffff );
+//$colour-neutral-light: #f9fafa;
+//$neutral-light: ( "base": $colour-neutral-light );
+//$colour-neutral-dark: #353e3f;
+//$neutral-dark: ( "base": $colour-neutral-dark );
 
 $colours: (
         "primary": $primary,
         "secondary": $secondary,
-        "white": $white,
-        "neutral-light": $neutral-light,
-        "neutral-dark": $neutral-dark
+        "neutral": $neutral,
+        "white": $white
 );
 
 $color-primary-0: #06595D;	// Main Primary color */
@@ -96,3 +100,17 @@ $i-thunderstorm:'fas fa-bolt';
 $i-snow: 'fas fa-snowflake';
 $i-mist: 'fas fa-smog';
 $i-map-marker: 'fas fa-map-marker-alt';
+
+// Margin and padding helper values
+$helpervalues: (0, 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5); //rem units
+$edges: (top, bottom, left, right, all);
+
+// Font size values
+$font-sizes: (2.5, 3, 3.5, 4, 4.5, 5);
+
+// Grid column and row classes
+$itemvalues: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+$axis: ('row', 'column');
+
+// Grid gap values
+$gapvalues: (0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 3.5);

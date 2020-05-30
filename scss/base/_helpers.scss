@@ -42,13 +42,13 @@
 
 // Colours - Backgrounds
 .bg-light {
-    background: $colour-neutral-light;
-    color: set-text-colour($colour-neutral-light);
+    background: colour('neutral', 'light');
+    color: set-text-colour(colour('neutral', 'light'));
 }
 
 .bg-dark {
-  background: $colour-neutral-dark;
-  color: set-text-colour($colour-neutral-dark);
+  background: colour('neutral', 'dark');
+  color: set-text-colour(colour('neutral', 'dark'));
 }
 
 .bg-primary {
@@ -62,8 +62,8 @@
 }
 
 .bg-menu {
-  background: $colour-neutral-dark;
-  color: set-text-colour($colour-neutral-dark);
+  background: colour('neutral', 'dark');
+  color: set-text-colour(colour('neutral', 'dark'));
 }
 
 // Surfaces
@@ -105,12 +105,47 @@
   text-align: center;
 }
 
-.v-center {
-  vertical-align: center;
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-xx-large {
+  font-size: xx-large;
+}
+
+.text-x-large {
+  font-size: x-large;
+}
+
+.text-large {
+  font-size: large;
+}
+
+.text-medium {
+  font-size: medium;
+}
+
+.text-small {
+  font-size: small;
+}
+
+.text-x-small {
+  font-size: x-small;
+}
+
+.text-xx-small {
+  font-size: xx-small;
+}
+
+.text-lead {
+  font-size: 1.2em;
 }
 
 .copyright {
-
   &:before {
     content: 'Copyright\0020\00A9\0020';
   }
@@ -118,20 +153,19 @@
   &:after {
     content: '. All Rights Reserved.';
   }
-
 }
 
 // Button
 .btn {
     display: inline-block;
     border: none;
-    background: colour('colour-neutral-dark', 'base');
+    background: colour('neutral', 'dark');
     color: #ffffff;
     padding: 0.5rem 1.5rem;
 }
-.btn-light { background: colour('colour-neutral-light', 'base'); }
-.btn-primary { background: $color-primary-base; }
-.btn-secondary { background: $color-secondary-base; }
+.btn-light { background: colour('neutral', 'light'); }
+.btn-primary { background: colour('primary', 'base'); }
+.btn-secondary { background: colour('secondary', 'base'); }
 
 .btn-block {
     display: block;
@@ -153,212 +187,40 @@
   font-size: smaller;
 }
 
-// Padding
-.p-25 { padding: 0.25rem; }
-.p-05 { padding: 0.5rem; }
-.p-1 { padding: 1rem; }
-.p-2 { padding: 1.5rem; }
-.p-3 { padding: 2rem; }
-.p-4 { padding: 2.5rem; }
-.p-5 { padding: 3rem; }
-.py-25 { padding: 0.25rem 0; }
-.py-05 { padding: 0.5rem 0; }
-.py-1 { padding: 1rem 0; }
-.py-2 { padding: 1.5rem 0; }
-.py-3 { padding: 2rem 0; }
-.py-4 { padding: 2.5rem 0; }
-.py-5 { padding: 3rem 0; }
-.px-25 { padding: 0 0.25rem; }
-.px-05 { padding: 0 0.5rem; }
-.px-1 { padding: 0 1rem; }
-.px-2 { padding: 0 1.5rem; }
-.px-3 { padding: 0 2rem; }
-.px-4 { padding: 0 2.5rem; }
-.px-5 { padding: 0 3rem; }
-
-// Margin
-.m-25 { margin: 0.25rem; }
-.m-05 { margin: 0.5rem; }
-.m-1 { margin: 1rem; }
-.m-2 { margin: 1.5rem; }
-.m-3 { margin: 2rem; }
-.m-4 { margin: 2.5rem; }
-.m-5 { margin: 3rem; }
-.my-25 { margin: 0.25rem 0; }
-.my-05 { margin: 0.5rem 0; }
-.my-1 { margin: 1rem 0; }
-.my-2 { margin: 1.5rem 0; }
-.my-3 { margin: 2rem 0; }
-.my-4 { margin: 2.5rem 0; }
-.my-5 { margin: 3rem 0; }
-.mx-25 { margin: 0 0.25rem; }
-.mx-05 { margin: 0 0.5rem; }
-.mx-1 { margin: 0 1rem; }
-.mx-2 { margin: 0 1.5rem; }
-.mx-3 { margin: 0 2rem; }
-.mx-4 { margin: 0 2.5rem; }
-.mx-5 { margin: 0 3rem; }
-
-// Grid defaults
-.grid-gap-05 { grid-gap: 0.5rem; }
-.grid-gap-1 { grid-gap: 1rem; }
-.grid-gap-15 { grid-gap: 1.5rem; }
-.grid-gap-2 { grid-gap: 2rem; }
-.grid-gap-25 { grid-gap: 2.5rem; }
-.grid-gap-3 { grid-gap: 3rem; }
-
-.grid-cols-2 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(2, auto);
+// flex row
+.row {
+    display: flex;
+    flex-direction: row;
 }
 
-.grid-cols-2fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
+// grid/flex alignment
+.row--jc-center {
+  justify-content: center;
 }
 
-.grid-cols-3 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(3, auto);
+.row--jc-evenly {
+  justify-content: space-evenly;
 }
 
-.grid-cols-3fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(3, 1fr);
+.row--jc-around {
+  justify-content: space-around;
 }
 
-.grid-cols-4 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(4, auto);
+.row--jc-between {
+  justify-content: space-between;
 }
 
-.grid-cols-4fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
+.row--ai-center {
+  align-items: center;
 }
 
-.grid-cols-5 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(5, auto);
-}
-
-.grid-cols-5fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(5, 1fr);
-}
-
-.grid-cols-6 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(6, auto);
-}
-
-.grid-cols-6fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(6, 1fr);
-}
-
-.grid-cols-7 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(7, auto);
-}
-
-.grid-cols-7fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(7, 1fr);
-}
-
-.grid-cols-8 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(8, auto);
-}
-
-.grid-cols-8fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(8, 1fr);
-}
-
-.grid-cols-9 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(9, auto);
-}
-
-.grid-cols-9fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(9, 1fr);
-}
-
-.grid-rows-2 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(2, auto);
-}
-
-.grid-rows-2fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(2, 1fr);
-}
-
-.grid-rows-3 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(3, auto);
-}
-
-.grid-rows-3fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(3, 1fr);
-}
-
-.grid-rows-4 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(4, auto);
-}
-
-.grid-rows-4fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(4, 1fr);
-}
-
-.grid-rows-5 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(5, auto);
-}
-
-  .grid-rows-5fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(5, 1fr);
-}
-
-.grid-rows-6 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(2, auto);
-}
-
-.grid-rows-6fr {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(2, 1fr);
-}
+// Margin and padding
+//.mx-025 {
+//  margin-right: 0.25rem;
+//  margin-left: 0.25rem;
+//}
+//
+//.mx-05 {
+//  margin-right: 0.5rem;
+//  margin-left: 0.5rem;
+//}

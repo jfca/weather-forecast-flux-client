@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Header from "../src/components/layout/Header";
 import {MemoryRouter} from "react-router-dom";
-import ForecastLocation from "../src/components/forecastlocation/ForecastLocation";
+import Location from "../src/components/location/Location";
 
-describe('ForecastLocation', () => {
+describe('Location', () => {
     let container;
     const cityName = 'Ottawa';
     const countryCode = 'CA';
@@ -18,7 +18,7 @@ describe('ForecastLocation', () => {
     it('renders an icon for the current maps', () => {
         render(
             <MemoryRouter>
-                <ForecastLocation countryCode={countryCode} cityName={cityName} />
+                <Location countryCode={countryCode} cityName={cityName} />
             </MemoryRouter>
         );
         expect(container.querySelector('#forecast-location i')).not.toBeNull();
@@ -29,7 +29,7 @@ describe('ForecastLocation', () => {
     it('renders a city name and country code', () => {
         render(
             <MemoryRouter>
-                <ForecastLocation countryCode={countryCode} cityName={cityName} />
+                <Location countryCode={countryCode} cityName={cityName} />
             </MemoryRouter>
         );
         expect(container.querySelector('#forecast-location span')).not.toBeNull();

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // @TODO css clip values for .circle-wrap, .circle, .mask, and .fill is set by user and based on 'value' property
 const PercentageCircle = ({ title, value }) => {
     return (
-        <div className="pc-container">
+        <div className="pc-container mx-1">
             <div className="circle-wrap">
                 <div className="circle">
                     <div className="mask full">

@@ -28,10 +28,10 @@ const ForecastHourlyColumn = ({ forecast }) => {
     }
 
     return (
-        <ul className="forecast-hourly-col">
+        <ul className="forecast-hourly-col text-center text-large">
             <li>
                 <p
-                    className="current-forecast-time"
+                    className="mx-1"
                     title={new Intl.DateTimeFormat(theme.locale, theme.intlDateOptions).format(secToMill(forecast.dt))}
                 >
                     {new Intl.DateTimeFormat(theme.locale, options).format(secToMill(forecast.dt))}
@@ -39,13 +39,13 @@ const ForecastHourlyColumn = ({ forecast }) => {
             </li>
             <li>
                 <i
-                    className={`${getFontAwesomeIcon(forecast.weather[0].icon, '2')} ${'current-forecast-weather-icon'}`}
+                    className={`${getFontAwesomeIcon(forecast.weather[0].icon, '2')} ${'mx-1'}`}
                     title={getIconDescriptionFromCode(forecast.weather[0].icon)}>
                 </i>
             </li>
             <li>
                 <p
-                    className="current-forecast-current-temp"
+                    className="text-primary text-lighten-2 text-x-large mx-1"
                     title="temperature">{convertKelvinToCelsius(forecast.main.temp)}
                 </p>
             </li>
@@ -53,7 +53,7 @@ const ForecastHourlyColumn = ({ forecast }) => {
             {forecast.wind.speed !== undefined ?
                 (<li>
                     <p
-                        className="current-forecast-atmosphere"
+                        className="mx-1"
                         title="wind speed">{forecast.wind.speed + WINDSPEED_UNITS}
                         {/*title="wind speed">{String(forecast.wind.speed + WINDSPEED_UNITS).trim()}*/}
                     </p>
@@ -64,7 +64,7 @@ const ForecastHourlyColumn = ({ forecast }) => {
             {forecast.wind.deg !== undefined ?
                 (<li>
                     <p
-                        className="current-forecast-atmosphere"
+                        className="mx-1"
                         title="wind direction">{getWindDirection(forecast.wind.deg)}
                     </p>
                 </li>)
@@ -74,7 +74,7 @@ const ForecastHourlyColumn = ({ forecast }) => {
             {forecast.main.humidity !== undefined ?
                 (<li>
                     <p
-                        className="current-forecast-atmosphere"
+                        className="mx-1"
                         title="humidity">{forecast.main.humidity + HUMIDITY_UNITS}
                     </p>
                 </li>)
@@ -84,7 +84,7 @@ const ForecastHourlyColumn = ({ forecast }) => {
             {forecast.main.pressure !== undefined ?
                 (<li>
                     <p
-                        className="current-forecast-atmosphere"
+                        className="mx-1"
                         title="atmospheric pressure">{forecast.main.pressure + PRESSURE_UNITS}
                     </p>
                 </li>)
@@ -94,7 +94,7 @@ const ForecastHourlyColumn = ({ forecast }) => {
             {forecast.clouds.all !== undefined ?
                 (<li>
                     <p
-                        className="current-forecast-atmosphere"
+                        className="mx-1"
                         title="cloudiness">{forecast.clouds.all + CLOUDINESS_UNITS}
                     </p>
                 </li>)
@@ -104,7 +104,7 @@ const ForecastHourlyColumn = ({ forecast }) => {
             {forecast.rain !== undefined && forecast.rain['1h'] !== undefined ?
                 (<li>
                     <p
-                        className="current-forecast-atmosphere"
+                        className="mx-1"
                         title="rainfall">{forecast.rain['1h'] + RAINFALL_UNITS}
                     </p>
                 </li>)
@@ -114,7 +114,7 @@ const ForecastHourlyColumn = ({ forecast }) => {
             {forecast.snow !== undefined && forecast.snow['1h'] !== undefined ?
                 (<li>
                     <p
-                        className="current-forecast-atmosphere"
+                        className="mx-1"
                         title="rainfall">{forecast.snow['1h'] + SNOWFALL_UNITS}
                     </p>
                 </li>)

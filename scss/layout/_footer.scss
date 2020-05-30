@@ -1,26 +1,8 @@
-#app-footer {
+.app-footer {
   position: sticky;
   left: 0;
   bottom: 0;
   height: $footer-height;
   width: 100%;
   z-index: 2;
-  @extend .bg-dark;
-
-  #footer-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    //color: $colour-neutral-dark;
-    font-size: 0.9rem;
-    @extend .container;
-
-    p {
-      padding: 0.5rem;
-
-      a {
-        //color: $color-primary-base;
-      }
-    }
-  }
 }

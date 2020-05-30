@@ -12,9 +12,9 @@ const ForecastDateHeading = ({ forecastDate, locale }) => {
 
     return (
         <Fragment>
-            <h2 className="forecast-date-heading">
+            <h1 className="forecast-date-heading text-center text-primary text-lighten-2">
                 {new Intl.DateTimeFormat(locale, options).format(secToMill(forecastDate))}
-            </h2>
+            </h1>
         </Fragment>
     );
 };

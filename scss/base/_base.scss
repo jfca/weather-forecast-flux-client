@@ -8,17 +8,18 @@
 }
 
 html {
-  height: 100vh;
+  //height: 100vh;
+  font-size: 16px;
 }
 
 body {
-  height: 100vh;
+  //height: 100vh;
   background-color: colour('primary', 'base');
 }
 
 a {
   text-decoration: none;
-  color: colour('secondary', 'base');
+  color: colour('secondary', 'lighten-1');
 }
 
 ul {
@@ -31,6 +32,13 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Shadows Into Light', cursive;
+  color: colour('white', 'base');
   text-transform: uppercase;
-  //color: colour('primary','base');
 }
+
+h1 { font-size: 2rem; } /* 63px 3.938em 2.5rem */
+h2 { font-size: 1.5rem; } /* 53.4 3.337em 2rem */
+h3 { font-size: 1.3rem; } /* 43.8 2.737em 1.75rem */
+h4 { font-size: 1rem; } /* 34.2 2.138em 1.5rem */
+h5 { font-size: 0.8rem; } /* 24.6 1.538em 1.25rem */
+h6 { font-size: 0.7rem; } /* 17.25 1.078em 1rem */

@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import CurrentWeatherDetails from "../currentweather/CurrentWeatherDetails";
 import CurrentForecastDetails from "../forecasts/CurrentForecastDetails";
 
-const CurrentWeather = props => {
+const CurrentWeather = () => {
     return (
         <Fragment>
             <CurrentWeatherDetails />

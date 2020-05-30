@@ -2,12 +2,12 @@ import React from 'react';
 import AppDetails from "../about/AppDetails";
 import AttributionList from "../about/AttributionList";
 
-const About = props => {
+const About = () => {
     return (
-        <section id="about">
+        <main className="about">
             <AppDetails/>
             <AttributionList/>
-        </section>
+        </main>
     );
 };
 

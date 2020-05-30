@@ -1,116 +1,94 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {Fragment, useContext, useEffect, useRef, useState} from 'react';
 import L from "leaflet";
-import { OPENWEATHER_API_KEY } from '../../utils/constants';
-import CurrentWeatherContext from "../../context/currentweather/currentweatherContext";
 import MapsContext from "../../context/maps/mapsContext";
-import LocationContext from "../../context/forecastlocation/locationContext";
+import LocationContext from "../../context/location/locationContext";
+import Spinner from "../layout/Spinner";
 
 const LocationMap = () => {
-    //@TODO merge city DB from weathermap and population
-    //@TODO show cities based on currentLocation lat/lon
     const mapsContext = useContext(MapsContext);
-    const { getCityMarkers } = mapsContext;
+    const { cityMarkers, loading, getCityMarkers } = mapsContext;
     const locationContext = useContext(LocationContext);
     const { currentLocation, defaultLocation, setCurrentLocation } = locationContext;
 
-    // Build color-primary-base layers
-    const baseLayersRef = useRef({});
-    const defaultMapRef = useRef(null);
+    const [mapCentre, setMapCentre] = useState([
+                defaultLocation.location.coordinates[1], /* lat */
+                defaultLocation.location.coordinates[0] /* lon */
+            ]);
+
     useEffect(() => {
-        defaultMapRef.current = L.tileLayer(
-            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
+        if (currentLocation === null) {
+            setCurrentLocation([
+                defaultLocation.location.coordinates[0], /* lon */
+                defaultLocation.location.coordinates[1] /* lat */
+            ])
+        } else {
+            setMapCentre([
+                currentLocation.location.coordinates[1], /* lat */
+                currentLocation.location.coordinates[0] /* lon */
+            ]);
+        }
+    }, [currentLocation]);
 
-        const satelliteMap = L.tileLayer(
-            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            {
-                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-            });
-
-        const topographicalMap = L.tileLayer(
-            'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-                maxZoom: 17,
-                attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-            });
-
-        baseLayersRef.current = {
-            '<span class="legend">Default</span>': defaultMapRef.current,
-            '<span class="legend">Satellite</span>': satelliteMap,
-            '<span class="legend">Topographical</span>': topographicalMap,
-        };
-    }, []);
-
-    // initialize map
-    if (currentLocation === null) {
-        setCurrentLocation(
-            `${defaultLocation.cityName},${defaultLocation.countryCode}`
-        );
-    }
-
+    // Initialize map and set center
     const mapRef = useRef(null);
+    const defaultLayerRef = useRef(null);
     useEffect(() => {
-        // create map
-        mapRef.current = L.map('location-map', {
-            center: [
-                currentLocation.lat,
-                currentLocation.lon
-            ],
-            zoom: 13,
-            layers: [defaultMapRef.current]
-        });
+        mapRef.current = L.map('location-map')
+            .setView(mapCentre, 10, { maxZoom: 15 });
+        defaultLayerRef.current = L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 15,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(mapRef.current);
         // eslint-disable-next-line
     },[]);
 
-     // Add control layer to map
-    const controlRef = useRef(null);
+     // Add marker layer to map
     const markerLayerRef = useRef(null);
     useEffect(() => {
-        controlRef.current = L.control.layers(baseLayersRef.current)
-            .addTo(mapRef.current);
-        markerLayerRef.current = L.layerGroup().addTo(mapRef.current);
+        markerLayerRef.current = L.geoJSON().addTo(mapRef.current);
         // eslint-disable-next-line
     }, []);
 
-    //
+    // Get map markers
     useEffect(() => {
-        console.log(currentLocation.countryCode);
-        if (currentLocation !== null) {
-            getCityMarkers(currentLocation.countryCode);
-        }
+        console.log(`useEffect setView ${mapCentre}`);
+        mapRef.current.setView(mapCentre);
+        getCityMarkers({
+            lon: mapCentre[1],
+            lat: mapCentre[0]
+        });
         // eslint-disable-next-line
-    }, []);
+    }, [mapCentre]);
 
     // Update city marker layer
+    const geoJSONRef = useRef(null);
     useEffect(() => {
-        if (mapsContext.cityMarkers !== null) {
-            controlRef.current.removeLayer(markerLayerRef);
+        console.log(cityMarkers);
+        if (cityMarkers !== null) {
             markerLayerRef.current.clearLayers();
-            console.log(mapsContext.cityMarkers);
-            Object.values(mapsContext.cityMarkers).map(city => {
-                const popupStr = `<span class="popup">${city.name.trimStart()}, ${city.country}</span>`;
-                L.marker([city.lat, city.lon])
-                    .bindPopup(popupStr)
+            Object.values(cityMarkers).map(city => {
+                L.geoJSON().addData(city.location)
+                    .bindPopup(function(layer) {
+                        return `<span class="map-container__popup">${city.name.trimStart()}, ${city.country}</span>`;
+                    })
                     .addTo(markerLayerRef.current)
-                    .on('click', );
+                    .on('click', onMarkerClick);
             });
-            controlRef.current.addOverlay(
-                markerLayerRef.current,
-                '<span class="legend">Cities</span>'
-            );
         }
         // eslint-disable-next-line
-    }, [mapsContext.cityMarkers]);
+    }, [cityMarkers]);
 
-    // const onMapClick = (e) => {
-    //     console.log(e);
-    //     alert('You clicked at ' + e.latlng);
-    // };
+    const onMarkerClick = (e) => {
+        console.log('onMarkerClick');
+        console.log(e);
+        setMapCentre([e.latlng.lat, e.latlng.lng]);
+        setCurrentLocation({lon: e.latlng.lng, lat: e.latlng.lat});
+    };
 
     return (
-        <div id="location-map-container">
-            <div id="location-map"></div>
+        <div className="map-container">
+            <div id="location-map" className="map-container__map mb-1"></div>
         </div>
     );
 };

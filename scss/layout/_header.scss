@@ -1,16 +1,15 @@
-#app-header {
+.app-header {
   position: sticky;
   top: 0;
   left: 0;
   height: $header-height;
   width: 100%;
-  background-color: $colour-neutral-dark;
-  border-bottom: 1px solid $colour-neutral-dark;
+  background-color: colour('neutral', 'dark');
+  border-bottom: 1px solid colour('neutral', 'dark');
   z-index: 2;
 
-  #app-header-wrapper {
+  &__container {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     @extend .container;

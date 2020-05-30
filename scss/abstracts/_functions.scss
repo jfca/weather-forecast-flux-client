@@ -4,7 +4,7 @@
       .#{$colour_name} {
         background-color: $colour_value !important;
       }
-      .#{$colour_name}-text {
+      .text-#{$colour_name} {
         color: $colour_value !important;
       }
     }
@@ -12,10 +12,77 @@
       .#{$colour_name}.#{$colour_type} {
         background-color: $colour_value !important;
       }
-      .#{$colour_name}-text.text-#{$colour_type} {
+      .text-#{$colour_name}.text-#{$colour_type} {
         color: $colour_value !important;
       }
     }
+  }
+}
+
+// Create margin and padding helpers
+//@TODO refactor (DRY)
+@each $helper in $helpervalues {
+  @each $edge in $edges {
+    $idx: str_index(quote($helper), '.');
+    $value: null;
+    @if($idx == null) {
+      $value: $helper;
+    } @else {
+      $prefix: str_slice(quote($helper), $idx - 1, 1);
+      $suffix: str_slice(quote($helper), $idx + 1);
+      $value: $prefix + $suffix;
+    }
+    @if($edge == top ) {
+      // single edge
+      .m#{str-slice($edge, 0, 1)}-#{$value} {
+        margin-#{$edge}: #{$helper}rem !important;
+      }
+      .p#{str-slice($edge, 0, 1)}-#{$value} {
+        padding-#{$edge}: #{$helper}rem !important;
+      }
+      // double edge
+      .my-#{$value} {
+        margin-#{$edge}: #{$helper}rem !important;
+        margin-bottom: #{$helper}rem !important;
+      }
+      .py-#{$value} {
+        padding-#{$edge}: #{$helper}rem !important;
+        padding-bottom: #{$helper}rem !important;
+      }
+    } @else if($edge == left) {
+      // single edge
+      .m#{str-slice($edge, 0, 1)}-#{$value} {
+        margin-#{$edge}: #{$helper}rem !important;
+      }
+      .p#{str-slice($edge, 0, 1)}-#{$value} {
+        padding-#{$edge}: #{$helper}rem !important;
+      }
+      // double edge
+      .mx-#{$value} {
+        margin-#{$edge}: #{$helper}rem !important;
+        margin-right: #{$helper}rem !important;
+      }
+      .px-#{$value} {
+        padding-#{$edge}: #{$helper}rem !important;
+        padding-right: #{$helper}rem !important;
+      }
+    } @else if(($edge == bottom) or ($edge == right)) {
+      // single edge
+      .m#{str-slice($edge, 0, 1)}-#{$value} {
+        margin-#{$edge}: #{$helper}rem !important;
+      }
+      .p#{str-slice($edge, 0, 1)}-#{$value} {
+        padding-#{$edge}: #{$helper}rem !important;
+      }
+    } @else if($edge == all) {
+      .m-#{$value} {
+        margin: #{$helper}rem !important;
+      }
+      .p-#{$value} {
+        padding: #{$helper}rem !important;
+      }
+    }
+
   }
 }
 
@@ -46,4 +113,50 @@
   } @else {
     @return #fff;
   }
+}
+
+// Font sizes
+// Create margin and padding helpers
+//@TODO refactor (DRY)
+@each $font-size in $font-sizes {
+  $idx: str_index(quote($font-size), '.');
+  $value: null;
+  @if($idx == null) {
+    $value: $font-size;
+  } @else {
+    $prefix: str_slice(quote($font-size), $idx - 1, 1);
+    $suffix: str_slice(quote($font-size), $idx + 1);
+    $value: $prefix + $suffix;
+  }
+  .text-#{$value} {
+    font-size: #{$font-size}rem !important;
+  }
+}
+
+// Grid row and column classes
+@each $ax in $axis {
+  @each $itemvalue in $itemvalues {
+    .grid-#{str_slice($ax, 0, 3)}s-#{$itemvalue} {
+      display: grid;
+      grid-template-#{$ax}s: repeat(#{$itemvalue}, auto);
+    }
+
+    .grid-#{str_slice($ax, 0, 3)}s-#{$itemvalue}fr {
+      display: grid;
+      grid-template-#{$ax}s: repeat(#{$itemvalue}, 1fr);
+    }
+  }
+}
+
+@each $gapvalue in $gapvalues {
+  $idx: str_index(quote($gapvalue), '.');
+  $value: null;
+  @if($idx == null) {
+    $value: $gapvalue;
+  } @else {
+    $prefix: str_slice(quote($gapvalue), $idx - 1, 1);
+    $suffix: str_slice(quote($gapvalue), $idx + 1);
+    $value: $prefix + $suffix;
+  }
+  .grid-gap-#{$value} { grid-gap: #{$gapvalue}rem; }
 }

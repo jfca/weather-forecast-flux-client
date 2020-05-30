@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {Route, Redirect} from "react-router-dom";
-import LocationContext from "../../context/forecastlocation/locationContext";
+import LocationContext from "../../context/location/locationContext";
 
 const PrivateRoute = ({ component: Component, ...rest}) => {
     const forecastlocationContext = useContext(LocationContext);

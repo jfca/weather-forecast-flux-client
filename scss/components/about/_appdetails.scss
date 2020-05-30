@@ -1,20 +1,10 @@
-#app-details {
-  @extend .bg-dark;
-  //background-color: $colour-neutral-dark;
+.app-details {
   border-radius: 15px;
-  border: 1px solid $colour-neutral-dark;
-  @extend .p-1;
-  @extend .m-1;
+  border: 1px solid colour('neutral', 'dark');
 
-  #app-desc {
-    //color: $colour-neutral-dark;
-    @extend .my-1;
-  }
-
-  #app-version {
+  &__version {
     font-family: "Raleway", sans-serif;
     font-size: 1.5rem;
-    //color: #ffffff;
-    margin: 0;
+    //margin: 0;
   }
 }

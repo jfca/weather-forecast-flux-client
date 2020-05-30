@@ -3,7 +3,7 @@ import L from "leaflet";
 import { OPENWEATHER_API_KEY } from '../../utils/constants';
 import CurrentWeatherContext from "../../context/currentweather/currentweatherContext";
 import MapsContext from "../../context/maps/mapsContext";
-import LocationContext from "../../context/forecastlocation/locationContext";
+import LocationContext from "../../context/location/locationContext";
 
 // @TODO add weather condition legends to each condition type
 // @TODO refactor tilelayers
@@ -52,6 +52,7 @@ const WeatherMap = () => {
             `${defaultLocation.cityName},${defaultLocation.countryCode}`
         );
     }
+
     const mapRef = useRef(null);
     useEffect(() => {
         // create map
@@ -110,11 +111,11 @@ const WeatherMap = () => {
         });
 
         overLaysRef.current = {
-            '<span class="legend">Clouds</span>': cloudsMap,
-            '<span class="legend">Precipitation</span>': precipitationMap,
-            '<span class="legend">Pressure</span>': pressureMap,
-            '<span class="legend">Wind Speed</span>': windspeedMap,
-            '<span class="legend">Temperature</span>': tempMap
+            '<span class="map-container__legend">Clouds</span>': cloudsMap,
+            '<span class="map-container__legend">Precipitation</span>': precipitationMap,
+            '<span class="map-container__legend">Pressure</span>': pressureMap,
+            '<span class="map-container__legend">Wind Speed</span>': windspeedMap,
+            '<span class="map-container__legend">Temperature</span>': tempMap
         };
     });
 
@@ -144,26 +145,21 @@ const WeatherMap = () => {
             console.log('weathermapsContext.cityMarkers');
             console.log(weathermapsContext.cityMarkers);
             Object.values(weathermapsContext.cityMarkers).map(city => {
-                const popupStr = `<span class="popup">${city.name.trimStart()}, ${city.country}</span>`;
+                const popupStr = `<span class="map-container__popup">${city.name.trimStart()}, ${city.country}</span>`;
                 L.marker([city.lat, city.lon])
                     .bindPopup(popupStr)
                     .addTo(markerLayerRef.current);
             });
             controlRef.current.addOverlay(
-                markerLayerRef.current, '<span class="legend">Cities</span>'
+                markerLayerRef.current, '<span class="map-container__legend">Cities</span>'
             );
         }
         // eslint-disable-next-line
     }, [weathermapsContext.cityMarkers]);
 
-    // const onMapClick = (e) => {
-    //     console.log(e);
-    //     alert('You clicked at ' + e.latlng);
-    // };
-
     return (
-        <div id="weathermap-container">
-            <div id="map"></div>
+        <div id="weathermap-container" className="map-container">
+            <div id="map" className="map-container__map"></div>
         </div>
     );
 };

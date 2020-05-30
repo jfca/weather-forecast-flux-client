@@ -45,8 +45,12 @@ const LocationState = props => {
             cityID: 6094817,
             cityName: 'Ottawa',
             countryCode: 'CA',
-            lat: 45.116052,
-            lon: -76.014273
+            lat: 45.411171, /* depricated */
+            lon: -75.69812, /* depricated */
+            location: {
+                type: 'Point',
+                coordinates: [ -75.69812, 45.411171 ]
+            }
         },
         cities: null,
         error: null,
@@ -95,13 +99,35 @@ const LocationState = props => {
         }
     };
 
+    const getCurrentLocationInfo = async (searchTerm) => {
+        console.log(searchTerm);
+        console.log(typeof searchTerm);
+        let query = null;
+        const distance = 50;
+        switch (typeof searchTerm) {
+            case "string":
+                const [ city, country ] = searchTerm.split(',');
+                query = `?city=${city}&country=${country}`;
+                console.log(query);
+                return `api/cities/city/name/${query}`;
+            case "number":
+                return `api/cities/city/id/${searchTerm}`;
+            case "object":
+                const { lon, lat } = searchTerm;
+                query = `?lon=${lon}&lat=${lat}`;
+                console.log(query);
+                return `api/cities/location/${query}`;
+            default:
+                return null;
+        }
+
+    };
+
     // SET_CURRENT_LOCATION
     const setCurrentLocation = async (searchTerm) => {
         try {
-            console.log(searchTerm);
-            const res = await axios.get(
-                `api/cities/city/name/${searchTerm}`
-            );
+            const url = await getCurrentLocationInfo(searchTerm);
+            const res = await axios.get(url);
             console.log(res.data);
             dispatch({
                 type: SET_CURRENT_LOCATION,
@@ -109,8 +135,7 @@ const LocationState = props => {
                     cityID: res.data.id,
                     cityName: res.data.name,
                     countryCode: res.data.country,
-                    lat: res.data.coord.lat,
-                    lon: res.data.coord.lon
+                    location: res.data.location
                 }
             })
         } catch (err) {

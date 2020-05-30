@@ -25,12 +25,12 @@ const SunriseSunset = (
     return (
         <Fragment>
             <div className="sunrise-sunset">
-                <i className={sunriseIcon} title="sunrise"></i>
-                <span>{new Intl.DateTimeFormat(theme.locale, options).format(secToMill(sunriseTime))}</span>
+                <i className={`${sunriseIcon} text-white`} title="sunrise"></i>
+                <span className="sunrise-sunset__time mx-1 text-xx-large">{new Intl.DateTimeFormat(theme.locale, options).format(secToMill(sunriseTime))}</span>
             </div>
             <div className="sunrise-sunset">
-                <i className={sunsetIcon} title="sunset"></i>
-                <span>{new Intl.DateTimeFormat(theme.locale, options).format(secToMill(sunsetTime))}</span>
+                <i className={`${sunsetIcon} text-white`} title="sunset"></i>
+                <span className="sunrise-sunset__time mx-1 text-xx-large">{new Intl.DateTimeFormat(theme.locale, options).format(secToMill(sunsetTime))}</span>
             </div>
         </Fragment>
     );
