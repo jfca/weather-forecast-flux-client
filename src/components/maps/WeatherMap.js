@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import L from "leaflet";
 import { OPENWEATHER_API_KEY } from '../../utils/constants';
 import CurrentWeatherContext from "../../context/currentweather/currentweatherContext";
@@ -12,12 +12,17 @@ import LocationContext from "../../context/location/locationContext";
 const WeatherMap = () => {
     //@TODO merge city DB from weathermap and population
     //@TODO show cities based on currentLocation lat/lon
-    const weathermapsContext = useContext(MapsContext);
-    const { getCityMarkers } = weathermapsContext;
-    const forecastlocationContext = useContext(LocationContext);
-    const { currentLocation, defaultLocation, setCurrentLocation } = forecastlocationContext;
+    // const weathermapsContext = useContext(MapsContext);
+    // const { getCityMarkers } = weathermapsContext;
+    const locationContext = useContext(LocationContext);
+    const { currentLocation, defaultLocation, setCurrentLocation } = locationContext;
 
-    // Build color-primary-base layers
+     const [mapCentre, setMapCentre] = useState([
+                defaultLocation.location.coordinates[1], /* lat */
+                defaultLocation.location.coordinates[0] /* lon */
+            ]);
+
+    // Build base layers
     const baseLayersRef = useRef({});
     const defaultMapRef = useRef(null);
     useEffect(() => {
@@ -40,35 +45,15 @@ const WeatherMap = () => {
             });
 
         baseLayersRef.current = {
-            '<span class="legend">Default</span>': defaultMapRef.current,
-            '<span class="legend">Satellite</span>': satelliteMap,
-            '<span class="legend">Topographical</span>': topographicalMap,
+            '<span class="text-neutral text-dark">Default</span>': defaultMapRef.current,
+            '<span class="text-neutral text-dark">Satellite</span>': satelliteMap,
+            '<span class="text-neutral text-dark">Topographical</span>': topographicalMap,
         };
     }, []);
 
-    // initialize map
-    if (currentLocation === null) {
-        setCurrentLocation(
-            `${defaultLocation.cityName},${defaultLocation.countryCode}`
-        );
-    }
-
-    const mapRef = useRef(null);
-    useEffect(() => {
-        // create map
-        mapRef.current = L.map('map', {
-            center: [
-                currentLocation.lat,
-                currentLocation.lon
-            ],
-            zoom: 13,
-            layers: [defaultMapRef.current]
-        });
-        // eslint-disable-next-line
-    },[]);
-
     // Build overlays layer
     const overLaysRef = useRef({});
+    const precipitationMapRef = useRef(null);
     useEffect(() => {
         const cloudsMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png?appid={apiKey}', {
             maxZoom: 19,
@@ -78,7 +63,7 @@ const WeatherMap = () => {
             layername: 'clouds'
         });
 
-        const precipitationMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png?appid={apiKey}', {
+        precipitationMapRef.current = L.tileLayer('http://{s}.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png?appid={apiKey}', {
             maxZoom: 19,
             attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
             apiKey: OPENWEATHER_API_KEY,
@@ -102,7 +87,7 @@ const WeatherMap = () => {
             layername: 'wind'
         });
 
-        const tempMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/{temp}/{z}/{x}/{y}.png?appid={apiKey}', {
+        const tempMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png?appid={apiKey}', {
             maxZoom: 19,
             attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
             apiKey: OPENWEATHER_API_KEY,
@@ -111,54 +96,70 @@ const WeatherMap = () => {
         });
 
         overLaysRef.current = {
-            '<span class="map-container__legend">Clouds</span>': cloudsMap,
-            '<span class="map-container__legend">Precipitation</span>': precipitationMap,
-            '<span class="map-container__legend">Pressure</span>': pressureMap,
-            '<span class="map-container__legend">Wind Speed</span>': windspeedMap,
-            '<span class="map-container__legend">Temperature</span>': tempMap
+            '<span class="text-neutral text-dark">Clouds</span>': cloudsMap,
+            '<span class="text-neutral text-dark">Precipitation</span>': precipitationMapRef.current,
+            '<span class="text-neutral text-dark">Pressure</span>': pressureMap,
+            '<span class="text-neutral text-dark">Wind Speed</span>': windspeedMap,
+            '<span class="text-neutral text-dark">Temperature</span>': tempMap
         };
     });
 
-     // Add control layer to map
+    // Set map centre and currentLocation
+    useEffect(() => {
+        console.log(currentLocation);
+        console.log(defaultLocation);
+        if (currentLocation === null) {
+            setCurrentLocation([
+                defaultLocation.location.coordinates[0], /* lon */
+                defaultLocation.location.coordinates[1] /* lat */
+            ])
+        } else {
+            setMapCentre([
+                currentLocation.location.coordinates[1], /* lat */
+                currentLocation.location.coordinates[0] /* lon */
+            ]);
+        }
+    }, [currentLocation]);
+
+    // Initialize map and set center and marker
+    const mapRef = useRef(null);
+    const defaultLayerRef = useRef(null);
+    const markerLayerRef = useRef( null);
     const controlRef = useRef(null);
-    const markerLayerRef = useRef(null);
     useEffect(() => {
-        controlRef.current = L.control.layers(baseLayersRef.current, overLaysRef.current)
-            .addTo(mapRef.current);
-        markerLayerRef.current = L.layerGroup().addTo(mapRef.current);
-        // eslint-disable-next-line
-    }, []);
-
-    //
-    useEffect(() => {
-        console.log(currentLocation.countryCode);
-        if (currentLocation !== null) {
-            getCityMarkers(currentLocation.countryCode);
-        }
-        // eslint-disable-next-line
-    }, []);
-
-    // Update city marker layer
-    useEffect(() => {
-        if (weathermapsContext.cityMarkers !== null) {
-            markerLayerRef.current.clearLayers();
-            console.log('weathermapsContext.cityMarkers');
-            console.log(weathermapsContext.cityMarkers);
-            Object.values(weathermapsContext.cityMarkers).map(city => {
-                const popupStr = `<span class="map-container__popup">${city.name.trimStart()}, ${city.country}</span>`;
-                L.marker([city.lat, city.lon])
-                    .bindPopup(popupStr)
-                    .addTo(markerLayerRef.current);
+        defaultLayerRef.current = L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 15,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             });
-            controlRef.current.addOverlay(
-                markerLayerRef.current, '<span class="map-container__legend">Cities</span>'
-            );
-        }
+        // create map
+        mapRef.current = L.map('map', {
+            center: mapCentre,
+            zoom: 10,
+            maxZoom: 15,
+            layers: [defaultMapRef.current, precipitationMapRef.current]
+            });
+        // const popupStr = `<span class="map-container__popup">${city.name.trimStart()}, ${city.country}</span>`;
+        markerLayerRef.current = L.layerGroup().addTo(mapRef.current);
+        L.marker([mapCentre[0], mapCentre[1]]).addTo(markerLayerRef.current);
+        // Add control layer to map
+        controlRef.current = L.control.layers(
+            baseLayersRef.current,
+            overLaysRef.current).addTo(mapRef.current);
         // eslint-disable-next-line
-    }, [weathermapsContext.cityMarkers]);
+    },[]);
 
+     // Update map center and marker
+    useEffect(() => {
+        mapRef.current.setView(mapCentre);
+        markerLayerRef.current.clearLayers();
+        L.marker([mapCentre[0], mapCentre[1]]).addTo(markerLayerRef.current);
+        // eslint-disable-next-line
+    }, [mapCentre]);
+
+    // @TODO refactor css, split into separate classes from location
     return (
-        <div id="weathermap-container" className="map-container">
+        <div className="map-container p-1 m-1 bg-dark">
             <div id="map" className="map-container__map"></div>
         </div>
     );

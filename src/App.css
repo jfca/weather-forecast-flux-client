@@ -1268,7 +1268,6 @@ body {
 .map-container {
   height: calc(90% - (4rem + 3rem));
   width: 100%;
-  padding: 1rem;
   border-radius: 15px;
   background-color: #353e3f;
   border: 1px solid #353e3f; }
@@ -1276,13 +1275,11 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    padding: 1rem;
     border-radius: 15px;
     border: 1px solid #353e3f;
     line-height: 1.2rem;
     z-index: 0; }
   .map-container .map-container__legend {
-    font-size: 1.2rem;
     color: #9A4C09; }
   .map-container .map-container__popup {
     font-size: 1rem;

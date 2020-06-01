@@ -1,7 +1,6 @@
 .map-container {
   height: calc(90% - (#{$header-height} + #{$footer-height}));
   width: 100%;
-  padding: 1rem;
   border-radius: 15px;
   background-color: colour('neutral', 'dark');
   border: 1px solid colour('neutral', 'dark');
@@ -10,7 +9,6 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    padding: 1rem;
     border-radius: 15px;
     border: 1px solid colour('neutral', 'dark');
     line-height: 1.2rem;
@@ -18,7 +16,7 @@
   }
 
   .map-container__legend {
-    font-size: 1.2rem;
+    //font-size: 1.2rem;
     color: colour('secondary', 'base');
   }
 

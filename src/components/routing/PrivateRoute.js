@@ -10,7 +10,7 @@ const PrivateRoute = ({ component: Component, ...rest}) => {
         <Route
             {...rest}
             render={props =>
-                currentLocation !== null ? (
+                currentLocation === null ? (
                     <Redirect to='/' />
                 ) : (
                     <Component {...props} />

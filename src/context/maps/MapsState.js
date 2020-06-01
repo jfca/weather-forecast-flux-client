@@ -19,21 +19,18 @@ const MapsState = props => {
     const [state, dispatch] = useReducer(mapsReducer, initialState);
 
      const getCurrentLocationInfo = async (searchTerm) => {
-        console.log(typeof searchTerm);
         let query = null;
         const distance = 50;
         switch (typeof searchTerm) {
             case "string":
                 const [ city, country ] = searchTerm.split(',');
                 query = `?city=${city}&country=${country}`;
-                console.log(query);
                 return `api/cities/city/name/${query}`;
             case "number":
                 return `api/cities/city/id/${searchTerm}`;
             case "object":
                 const { lon, lat } = searchTerm;
                 query = `?lon=${lon}&lat=${lat}&distance=${distance}`;
-                console.log(query);
                 return `api/cities/area/${query}`;
             default:
                 return null;
@@ -47,7 +44,6 @@ const MapsState = props => {
         try {
             const url = await getCurrentLocationInfo(searchParam);
             const res = await axios.get(url);
-            console.log(res.data);
             const cities_res = res.data.reduce((acc, cur) => (
                 {
                     ...acc,

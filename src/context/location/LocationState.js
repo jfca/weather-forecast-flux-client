@@ -67,7 +67,6 @@ const LocationState = props => {
     // GET_CITY_INFO
     const getCities = async (searchTerm) => {
         try {
-            console.log(`searchTerm: ${searchTerm} (${typeof searchTerm})`);
             let url = null;
             if (typeof searchTerm === 'number') {
                 url = `api/cities/id/${searchTerm}`;
@@ -88,8 +87,6 @@ const LocationState = props => {
                         lon: cur.coord.lon
                     }
                 }), {});
-            console.log('cities_res');
-            console.log(cities_res);
             dispatch({
                 type: GET_CITY_INFO,
                 payload: cities_res
@@ -100,22 +97,18 @@ const LocationState = props => {
     };
 
     const getCurrentLocationInfo = async (searchTerm) => {
-        console.log(searchTerm);
-        console.log(typeof searchTerm);
         let query = null;
         const distance = 50;
         switch (typeof searchTerm) {
             case "string":
                 const [ city, country ] = searchTerm.split(',');
                 query = `?city=${city}&country=${country}`;
-                console.log(query);
                 return `api/cities/city/name/${query}`;
             case "number":
                 return `api/cities/city/id/${searchTerm}`;
             case "object":
                 const { lon, lat } = searchTerm;
                 query = `?lon=${lon}&lat=${lat}`;
-                console.log(query);
                 return `api/cities/location/${query}`;
             default:
                 return null;
@@ -128,7 +121,6 @@ const LocationState = props => {
         try {
             const url = await getCurrentLocationInfo(searchTerm);
             const res = await axios.get(url);
-            console.log(res.data);
             dispatch({
                 type: SET_CURRENT_LOCATION,
                 payload: {

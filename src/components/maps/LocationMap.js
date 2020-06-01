@@ -1,12 +1,11 @@
-import React, {Fragment, useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import L from "leaflet";
 import MapsContext from "../../context/maps/mapsContext";
 import LocationContext from "../../context/location/locationContext";
-import Spinner from "../layout/Spinner";
 
 const LocationMap = () => {
     const mapsContext = useContext(MapsContext);
-    const { cityMarkers, loading, getCityMarkers } = mapsContext;
+    const { cityMarkers, getCityMarkers } = mapsContext;
     const locationContext = useContext(LocationContext);
     const { currentLocation, defaultLocation, setCurrentLocation } = locationContext;
 
@@ -15,21 +14,22 @@ const LocationMap = () => {
                 defaultLocation.location.coordinates[0] /* lon */
             ]);
 
+    // Set initial current location
     useEffect(() => {
         if (currentLocation === null) {
             setCurrentLocation([
                 defaultLocation.location.coordinates[0], /* lon */
-                defaultLocation.location.coordinates[1] /* lat */
+                defaultLocation.location.coordinates[1]  /* lat */
             ])
         } else {
             setMapCentre([
                 currentLocation.location.coordinates[1], /* lat */
-                currentLocation.location.coordinates[0] /* lon */
+                currentLocation.location.coordinates[0]  /* lon */
             ]);
         }
     }, [currentLocation]);
 
-    // Initialize map and set center
+    // Initialize map and set center point
     const mapRef = useRef(null);
     const defaultLayerRef = useRef(null);
     useEffect(() => {
@@ -52,7 +52,6 @@ const LocationMap = () => {
 
     // Get map markers
     useEffect(() => {
-        console.log(`useEffect setView ${mapCentre}`);
         mapRef.current.setView(mapCentre);
         getCityMarkers({
             lon: mapCentre[1],
@@ -62,11 +61,9 @@ const LocationMap = () => {
     }, [mapCentre]);
 
     // Update city marker layer
-    const geoJSONRef = useRef(null);
     useEffect(() => {
-        console.log(cityMarkers);
         if (cityMarkers !== null) {
-            markerLayerRef.current.clearLayers();
+            // markerLayerRef.current.clearLayers();
             Object.values(cityMarkers).map(city => {
                 L.geoJSON().addData(city.location)
                     .bindPopup(function(layer) {
@@ -80,8 +77,6 @@ const LocationMap = () => {
     }, [cityMarkers]);
 
     const onMarkerClick = (e) => {
-        console.log('onMarkerClick');
-        console.log(e);
         setMapCentre([e.latlng.lat, e.latlng.lng]);
         setCurrentLocation({lon: e.latlng.lng, lat: e.latlng.lat});
     };

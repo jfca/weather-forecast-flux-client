@@ -3,7 +3,7 @@ import WeatherMap from "../maps/WeatherMap";
 
 const WeatherMaps = props => {
     return (
-        <section id="map-dashboard" className="bg-dark">
+        <section id="map-dashboard">
             <WeatherMap />
         </section>
     );
