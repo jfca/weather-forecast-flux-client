@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState, Fragment} from 'react';
+import React, {useContext, useEffect, Fragment} from 'react';
 import CurrentTemp from "./CurrentTemp";
 import SunriseSunset from "./SunriseSunset";
 import CurrentWeatherContext from "../../context/currentweather/currentweatherContext";

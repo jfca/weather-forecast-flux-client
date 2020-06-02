@@ -6,7 +6,8 @@ import forecastReducer from "./forecastReducer";
 
 const ForecastState = props => {
     const initialState = {
-        forecasts: {
+        forecasts: null,
+        defaultForecasts: {
             "cod": "200",
             "message": 0,
             "cnt": 40,
@@ -1384,12 +1385,15 @@ const ForecastState = props => {
                 "sunset": 1588291676
             }
         },
-        error: null
+        error: null,
+        loading: true
     };
 
     const [state, dispatch] = useReducer(forecastReducer, initialState);
 
-    // action functions
+    // GET_5DAY_FORECAST,
+
+    // FORECAST_ERROR
 
     return (
         <ForecastContext.Provider

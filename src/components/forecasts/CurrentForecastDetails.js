@@ -1,11 +1,28 @@
-import React, { useContext } from 'react';
+import React, {useContext, useEffect} from 'react';
 import ForecastContext from "../../context/forecasts/forecastContext";
 import {secToMill} from "../../utils/helperFuncs";
 import ForecastDailyRow from "./ForecastDailyRow";
+import LocationContext from "../../context/location/locationContext";
 
 const CurrentForecastDetails = props => {
     const forecastContext = useContext(ForecastContext);
     const { forecasts } = forecastContext;
+
+    const locationContext = useContext(LocationContext);
+    const { currentLocation, defaultLocation, setCurrentLocation } = locationContext;
+
+    // Set initial current location
+    useEffect(() => {
+        if (currentLocation === null) {
+            setCurrentLocation([
+                defaultLocation.location.coordinates[0], /* lon */
+                defaultLocation.location.coordinates[1]  /* lat */
+            ]);
+            // getCurrentWeather(defaultLocation.cityID);
+        } else {
+            // getCurrentWeather(currentLocation.cityID);
+        }
+    }, [currentLocation]);
 
     const isSameDate = (dateOne, dateTwo) => {
         let shortDateOne;
