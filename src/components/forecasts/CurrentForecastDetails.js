@@ -1,12 +1,13 @@
-import React, {useContext, useEffect} from 'react';
+import React, {Fragment, useContext, useEffect} from 'react';
 import ForecastContext from "../../context/forecasts/forecastContext";
 import {secToMill} from "../../utils/helperFuncs";
 import ForecastDailyRow from "./ForecastDailyRow";
 import LocationContext from "../../context/location/locationContext";
+import Spinner from "../layout/Spinner";
 
 const CurrentForecastDetails = props => {
     const forecastContext = useContext(ForecastContext);
-    const { forecasts } = forecastContext;
+    const { loading, forecasts, getForecasts } = forecastContext;
 
     const locationContext = useContext(LocationContext);
     const { currentLocation, defaultLocation, setCurrentLocation } = locationContext;
@@ -18,9 +19,9 @@ const CurrentForecastDetails = props => {
                 defaultLocation.location.coordinates[0], /* lon */
                 defaultLocation.location.coordinates[1]  /* lat */
             ]);
-            // getCurrentWeather(defaultLocation.cityID);
+            getForecasts(defaultLocation.cityID);
         } else {
-            // getCurrentWeather(currentLocation.cityID);
+            getForecasts(currentLocation.cityID);
         }
     }, [currentLocation]);
 
@@ -74,16 +75,19 @@ const CurrentForecastDetails = props => {
     }
 
     return (
-        <section className="grid-rows-5 grid-gap-1 bg-primary p-1">
-            {parseForecasts(forecasts.list).map((forecast) => (
-                    <ForecastDailyRow
-                        key={forecast.dateHeader.toString()}
-                        forecastDate={forecast.dateHeader}
-                        hourlyForecasts={forecast.hourlyForecasts}
-                    />
-                )
-            )}
-        </section>
+        <Fragment>
+            {forecasts !== null && !loading ? (
+                <section className="grid-rows-5 grid-gap-1 bg-primary p-1">
+                {parseForecasts(forecasts.list).map((forecast) => (
+                        <ForecastDailyRow
+                            key={forecast.dateHeader.toString()}
+                            forecastDate={forecast.dateHeader}
+                            hourlyForecasts={forecast.hourlyForecasts}
+                        />
+                    )
+                )}
+            </section> ) : <Spinner/>}
+        </Fragment>
     );
 };
 

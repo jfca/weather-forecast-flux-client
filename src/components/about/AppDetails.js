@@ -9,7 +9,6 @@ const AppDetails = props => {
         getAppVersion();
     }, []);
 
-    //@TODO fix issue and find where <p> tag set to 5rem
     return (
         <section id="app-details" className="app-details bg-dark p-1 m-1">
             <h1 id="app-title">About Weather Forecaster</h1>

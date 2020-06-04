@@ -21,16 +21,16 @@ const Location = () => {
     }, [currentLocation]);
 
     return (
-        <div className="location">
+        <div className="row row--ai-center row--jc-center">
             <i
                 alt="Current forecast location"
-                className={`${iconClasses.locationIcon} fa-2x text-white mx-05`}
+                className={`${iconClasses.locationIcon} fa-2x mx-05 text-white text-xx-large`}
                 title="Current forecast location"
             />
             {currentLocation !== null ? (
-                <h2 className="mx-025 text-secondary text-lighten-1">
+                <h1 className="mx-025 text-secondary text-lighten-1">
                     {cityName}, {countryCode}
-                </h2>
+                </h1>
             ) : (
                 <span></span>
             )}

@@ -194,7 +194,7 @@
 .pl-05 {
   padding-left: 0.5rem !important; }
 
-.mx-05, .location__icon {
+.mx-05 {
   margin-left: 0.5rem !important;
   margin-right: 0.5rem !important; }
 
@@ -1031,7 +1031,7 @@ body {
   font-size: xx-small; }
 
 .text-lead {
-  font-size: 1.2em; }
+  font-size: 1.2rem; }
 
 .copyright:before {
   content: 'Copyright\0020\00A9\0020'; }
@@ -1176,9 +1176,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center; }
-  .location__icon {
-    font-size: 2rem;
-    color: #ffffff; }
 
 .current-temp__icon {
   justify-self: flex-end; }

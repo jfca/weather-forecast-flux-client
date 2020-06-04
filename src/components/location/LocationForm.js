@@ -30,7 +30,7 @@ const LocationForm = ({ icon, placeholder }) => {
 
     return (
         <div className="locationsearch">
-            <i className={`${icon} locationsearch__icon text-white`}></i>
+            {/*<i className={`${icon} locationsearch__icon text-white`}></i>*/}
             <form className="locationsearch__form" onSubmit={onSubmit}>
                 <div className="locationsearch__container">
                     <label

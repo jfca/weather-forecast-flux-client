@@ -2,6 +2,8 @@ import React, { useReducer } from "react";
 // import axios from 'axios';
 import ForecastContext from "./forecastContext";
 import forecastReducer from "./forecastReducer";
+import axios from "axios";
+import {CURRENT_WEATHER_ERROR, FORECAST_ERROR, GET_5DAY_FORECAST, GET_CURRENT_WEATHER} from "../types";
 // import {} from '../types';
 
 const ForecastState = props => {
@@ -1392,14 +1394,29 @@ const ForecastState = props => {
     const [state, dispatch] = useReducer(forecastReducer, initialState);
 
     // GET_5DAY_FORECAST,
+    const getForecasts = async (id) => {
+        try {
+            const res = await axios.get(`/api/weather/5dayforecast/${id}`);
 
-    // FORECAST_ERROR
+            dispatch({
+                type: GET_5DAY_FORECAST,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err);
+            dispatch({
+                type: FORECAST_ERROR,
+                payload: err.response.msg
+            })
+        }
+    }
 
     return (
         <ForecastContext.Provider
             value={{
                 forecasts: state.forecasts,
-                error: state.error
+                error: state.error,
+                getForecasts
             }}>
             { props.children }
         </ForecastContext.Provider>
