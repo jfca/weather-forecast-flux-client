@@ -2,25 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f615f0c2-dea6-47c2-9d5f-e9316e0a9e9e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/currentweather/CurrentWeatherRow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/currentweather/CurrentWeatherSection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/forecasts/ForecastDataRow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/forecasts/ForecastHeadingRow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/forecasts/ForecastSection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/CurrentWeather.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Forecast.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/helperFuncs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layout/Preloader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layout/SelectBtn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/locations/CitySelectOptions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/locations/CountrySelectOptions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/locations/LocationName.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/locations/LocationSection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/locations/LocationSelectModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/map/Map.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/map/MapSection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/testData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/LocationModal.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/LocationSection.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/Map.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/SelectOptions.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/currentweather/CurrentWeatherRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/currentweather/CurrentWeatherRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/currentweather/CurrentWeatherSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/currentweather/CurrentWeatherSection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forecasts/ForecastDataRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forecasts/ForecastDataRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forecasts/ForecastHeadingRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forecasts/ForecastHeadingRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forecasts/ForecastSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forecasts/ForecastSection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/CurrentWeather.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/CurrentWeather.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Forecast.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/Forecast.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/helperFuncs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helperFuncs.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +61,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/sampledata/currentweather.json&#10;/media/anthony/1TBDisk/Projects/WebApps/weather-forecast-clients/weather-forecast-flux-client/sampledata/5dayforecast.json" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Tutorials" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/locations" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,7 +73,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
-  <component name="RunManager" selected="Jest.All tests">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/locations" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/map" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
     <configuration name="All tests" type="JavaScriptTestRunnerJest">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -115,7 +130,11 @@
       <workItem from="1581847943346" duration="1983000" />
       <workItem from="1581858540658" duration="12738000" />
       <workItem from="1581901729830" duration="25828000" />
-      <workItem from="1581990659260" duration="22787000" />
+      <workItem from="1581990659260" duration="31387000" />
+      <workItem from="1582072926269" duration="5777000" />
+      <workItem from="1582084701067" duration="29694000" />
+      <workItem from="1582162663010" duration="26955000" />
+      <workItem from="1582253203807" duration="10106000" />
     </task>
     <servers />
   </component>
@@ -147,30 +166,66 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1581680266363" />
-    <state width="1807" height="254" key="GridCell.Tab.0.bottom" timestamp="1582026481253">
+    <state x="771" y="296" width="424" height="513" key="FileChooserDialogImpl" timestamp="1582264023626">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="254" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1582026481253" />
-    <state width="1807" height="254" key="GridCell.Tab.0.center" timestamp="1582026481252">
+    <state x="771" y="296" width="424" height="513" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1582264023626" />
+    <state width="1807" height="254" key="GridCell.Tab.0.bottom" timestamp="1582273463363">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="254" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1582026481252" />
-    <state width="1807" height="254" key="GridCell.Tab.0.left" timestamp="1582026481252">
+    <state width="1807" height="254" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1582273463363" />
+    <state width="1807" height="254" key="GridCell.Tab.0.center" timestamp="1582273463363">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="254" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1582026481252" />
-    <state width="1807" height="254" key="GridCell.Tab.0.right" timestamp="1582026481252">
+    <state width="1807" height="254" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1582273463363" />
+    <state width="1807" height="254" key="GridCell.Tab.0.left" timestamp="1582273463363">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="254" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1582026481252" />
+    <state width="1807" height="254" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1582273463363" />
+    <state width="1807" height="254" key="GridCell.Tab.0.right" timestamp="1582273463363">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="254" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1582273463363" />
+    <state width="1807" height="318" key="GridCell.Tab.1.bottom" timestamp="1582219307917">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="318" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1582219307917" />
+    <state width="1807" height="318" key="GridCell.Tab.1.center" timestamp="1582219307917">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="318" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1582219307917" />
+    <state width="1807" height="318" key="GridCell.Tab.1.left" timestamp="1582219307917">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="318" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1582219307917" />
+    <state width="1807" height="318" key="GridCell.Tab.1.right" timestamp="1582219307917">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="318" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1582219307917" />
+    <state width="1807" height="318" key="GridCell.Tab.2.bottom" timestamp="1582219307918">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="318" key="GridCell.Tab.2.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1582219307918" />
+    <state width="1807" height="318" key="GridCell.Tab.2.center" timestamp="1582219307918">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="318" key="GridCell.Tab.2.center/67.27.1853.1053@67.27.1853.1053" timestamp="1582219307918" />
+    <state width="1807" height="318" key="GridCell.Tab.2.left" timestamp="1582219307917">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="318" key="GridCell.Tab.2.left/67.27.1853.1053@67.27.1853.1053" timestamp="1582219307917" />
+    <state width="1807" height="318" key="GridCell.Tab.2.right" timestamp="1582219307918">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="318" key="GridCell.Tab.2.right/67.27.1853.1053@67.27.1853.1053" timestamp="1582219307918" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1581687158173">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1581687158173" />
-    <state x="648" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1581858544523">
+    <state x="648" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1582253213705">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="648" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1581858544523" />
+    <state x="648" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582253213705" />
     <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1582013403517">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

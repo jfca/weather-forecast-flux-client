@@ -4,9 +4,15 @@ import CurrentWeatherRow from "./CurrentWeatherRow";
 
 const CurrentWeatherSection = ({ currentforecast }) => {
     return (
-        <div id="cws">
-            <h1>Current Weather</h1>
-            <CurrentWeatherRow currentforecast={currentforecast}/>
+        <div id="current-weather-section" className="row">
+            <div className="col s12">
+                <div className="card">
+                    <div className="card-content">
+                        <span id="current-weather-title" className="card-title">Current Weather</span>
+                        <CurrentWeatherRow currentforecast={currentforecast}/>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
