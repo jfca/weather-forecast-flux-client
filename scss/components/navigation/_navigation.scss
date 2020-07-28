@@ -1,0 +1,33 @@
+.navigation {
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: right;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__listitem {
+    height: 100%;
+    align-self: center;
+    padding: 1.2rem 0.5rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: colour('white', 'base');
+    border-bottom: 3px transparent solid;
+    padding-bottom: 0.5rem;
+    transition: border-color 0.5s;
+
+    &:hover {
+      border-color: colour('secondary', 'lighten-1');
+    }
+
+    &--current {
+      border-color: colour('secondary', 'lighten-1');
+    }
+  }
+}

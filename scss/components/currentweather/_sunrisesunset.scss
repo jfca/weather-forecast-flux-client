@@ -1,0 +1,10 @@
+// Sunrise & sunset
+.sunrise-sunset {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__time {
+    color: colour('primary', 'lighten-2');
+  }
+}

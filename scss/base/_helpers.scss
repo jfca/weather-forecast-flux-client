@@ -1,0 +1,226 @@
+// Base
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  max-width: $website-width;
+  padding: 0 1.5rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Colours - Backgrounds
+.bg-light {
+    background: colour('neutral', 'light');
+    color: set-text-colour(colour('neutral', 'light'));
+}
+
+.bg-dark {
+  background: colour('neutral', 'dark');
+  color: set-text-colour(colour('neutral', 'dark'));
+}
+
+.bg-primary {
+    background: colour('primary','base');
+    color: set-text-colour(colour('primary','base'));
+}
+
+.bg-secondary {
+    background: colour('secondary','base');
+    color: set-text-colour(colour('secondary','base'));
+}
+
+.bg-menu {
+  background: colour('neutral', 'dark');
+  color: set-text-colour(colour('neutral', 'dark'));
+}
+
+// Surfaces
+
+// Iconography
+.icon-img {
+  height: 50px;
+  width: 50px;
+  max-width: 100%;
+}
+
+.icon-img-2x {
+  height: 100px;
+  width: 100px;
+  max-width: 100%;
+}
+
+// Typography
+.title {
+  font-family: 'Shadows Into Light', cursive;
+  font-weight: bold;
+  color: colour('primary', 'lighten-2');
+}
+
+.title-uc {
+  @extend .title;
+  text-transform: uppercase;
+}
+
+.text-uc {
+  text-transform: uppercase;
+}
+
+.text-ul {
+  text-decoration: underline;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-xx-large {
+  font-size: xx-large; // 2rem
+}
+
+.text-x-large {
+  font-size: x-large; // 1.5rem
+}
+
+.text-large {
+  font-size: large; // 1.125rem
+}
+
+.text-medium {
+  font-size: medium; // 1rem
+}
+
+.text-small {
+  font-size: small; // 0.813rem
+}
+
+.text-x-small {
+  font-size: x-small; // 0.625rem
+}
+
+.text-xx-small {
+  font-size: xx-small; // 0.563rem
+}
+
+.text-lead {
+  font-size: 1.2rem;
+}
+
+.copyright {
+  &:before {
+    content: 'Copyright\0020\00A9\0020';
+  }
+
+  &:after {
+    content: '. All Rights Reserved.';
+  }
+}
+
+// Button
+.btn {
+    display: inline-block;
+    border: none;
+    background: colour('neutral', 'dark');
+    color: #ffffff;
+    padding: 0.5rem 1.5rem;
+}
+.btn-light { background: colour('neutral', 'light'); }
+.btn-primary { background: colour('primary', 'base'); }
+.btn-secondary { background: colour('secondary', 'base'); }
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.sign-positive:before {
+  content: '+';
+  font-size: smaller;
+}
+
+.sign-negative:before {
+  content: '-';
+  font-size: smaller;
+}
+
+// flex row
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+// grid/flex alignment
+.row--jc-center {
+  justify-content: center;
+}
+
+.row--jc-evenly {
+  justify-content: space-evenly;
+}
+
+.row--jc-around {
+  justify-content: space-around;
+}
+
+.row--jc-between {
+  justify-content: space-between;
+}
+
+.row--ai-center {
+  align-items: center;
+}
+
+// Margin and padding
+//.mx-025 {
+//  margin-right: 0.25rem;
+//  margin-left: 0.25rem;
+//}
+//
+//.mx-05 {
+//  margin-right: 0.5rem;
+//  margin-left: 0.5rem;
+//}

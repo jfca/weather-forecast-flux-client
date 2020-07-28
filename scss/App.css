@@ -1,0 +1,497 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #f5f5f5;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Shadows Into Light", cursive;
+  text-transform: uppercase;
+  color: #12FFD9;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  line-height: 1.6;
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  max-width: 1280px;
+  padding: 0 1.5rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0;
+  /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.title, .title-uc {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: bold;
+  color: #12FFD9;
+}
+
+.title-uc {
+  text-transform: uppercase;
+}
+
+.text-uc {
+  text-transform: uppercase;
+}
+
+.text-ul {
+  text-decoration: underline;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.icon-img {
+  height: 50px;
+  width: 50px;
+  max-width: 100%;
+}
+
+.icon-img-2x {
+  height: 100px;
+  width: 100px;
+  max-width: 100%;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: #40514e;
+  color: #ffffff;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn-light {
+  background: #f5f5f5;
+}
+
+.btn-primary {
+  background: #12FFD9;
+}
+
+.btn-secondary {
+  background: #2FA3FF;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.sign-positive:before {
+  content: "+";
+  font-size: smaller;
+}
+
+.sign-negative:before {
+  content: "-";
+  font-size: smaller;
+}
+
+.p-05 {
+  padding: 0.5rem;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 2rem;
+}
+
+.py-05 {
+  padding: 0.5rem 0;
+}
+
+.py-1 {
+  padding: 1rem 0;
+}
+
+.py-2 {
+  padding: 1.5rem 0;
+}
+
+.py-3 {
+  padding: 2rem 0;
+}
+
+.px-05 {
+  padding: 0 0.5rem;
+}
+
+.px-1 {
+  padding: 0 1rem;
+}
+
+.px-2 {
+  padding: 0 1.5rem;
+}
+
+.px-3 {
+  padding: 0 2rem;
+}
+
+.m-05 {
+  margin: 0.5rem;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.m-2 {
+  margin: 1.5rem;
+}
+
+.m-3 {
+  margin: 2rem;
+}
+
+.my-05 {
+  margin: 0.5rem 0;
+}
+
+.my-1 {
+  margin: 1rem 0;
+}
+
+.my-2 {
+  margin: 1.5rem 0;
+}
+
+.my-3 {
+  margin: 2rem 0;
+}
+
+.mx-05 {
+  margin: 0 0.5rem;
+}
+
+.mx-1 {
+  margin: 0 1rem;
+}
+
+.mx-2 {
+  margin: 0 1.5rem;
+}
+
+.mx-3 {
+  margin: 0 2rem;
+}
+
+.bg-light {
+  background: #65817b;
+  color: #f5f5f5;
+}
+
+.bg-terciary {
+  background: #40514e;
+  color: #f5f5f5;
+}
+
+.bg-dark {
+  background: #161d1b;
+  color: #f5f5f5;
+}
+
+.bg-primary {
+  background: #12FFD9;
+  color: #40514e;
+}
+
+.bg-secondary {
+  background: #2FA3FF;
+  color: #12FFD9;
+}
+
+.bg-terciary h1,
+.bg-terciary h2,
+.bg-terciary h3,
+.bg-terciary a,
+.bg-primary h1,
+.bg-primary h2,
+.bg-primary h3,
+.bg-primary a,
+.bg-secondary h1,
+.bg-secondary h2,
+.bg-secondary h3,
+.bg-secondary a {
+  color: #12FFD9;
+}
+
+.material-icons.primary {
+  color: #12FFD9;
+}
+
+.material-icons.secondary {
+  color: #2FA3FF;
+}
+
+.material-icons.terciary {
+  color: #40514e;
+}
+
+.material-icons.neutral {
+  color: #f5f5f5;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+#header {
+  background-color: #161d1b;
+  width: 100%;
+  height: 4rem;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1rem;
+}
+#navbar .current {
+  color: #80c6ff;
+}
+
+.menu-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin-right: 1rem;
+}
+
+.menu-wrap .toggler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 40px;
+  height: 60px;
+  opacity: 0;
+}
+
+.menu-wrap .hamburger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 40px;
+  height: 60px;
+  padding: 1rem;
+  background: #161d1b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger Line */
+.menu-wrap .hamburger > div {
+  position: absolute;
+  flex: none;
+  width: 100%;
+  height: 3px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+/* Hamburger Lines - Top& Bottom */
+.menu-wrap .hamburger > div:before,
+.menu-wrap .hamburger > div:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 3px;
+  background: inherit;
+}
+
+/* Moves bottom hamburger line down */
+.menu-wrap .hamburger > div:after {
+  top: 10px;
+}
+
+/* Toggler Animation */
+.menu-wrap .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+
+/* Turns lines into X */
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* Rotate On Hover When Checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+/* Show Menu */
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition: 0.75s;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.4s;
+}
+
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-wrap .menu > div {
+  background: rgba(64, 81, 78, 0.75);
+  border-radius: 50%;
+  width: 200vw;
+  height: 200vw;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+  list-style: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.menu-wrap .menu > div > div > ul > li > a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li > a:hover {
+  color: #80c6ff;
+}
+
+#forecast-location {
+  display: flex;
+  flex-direction: row;
+  grid-gap: 0.5rem;
+  justify-content: left;
+  align-items: center;
+  color: #12FFD9;
+  margin: 0.25rem;
+}
+#forecast-location i {
+  color: #2FA3FF;
+  margin: 0 0.5rem;
+  font-size: 1.5rem;
+}
+#forecast-location h2 {
+  display: inline;
+  margin: 0 0.5rem;
+}
+
+/*# sourceMappingURL=App.css.map */

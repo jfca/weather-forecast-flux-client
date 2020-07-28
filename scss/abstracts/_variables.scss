@@ -1,0 +1,117 @@
+// Variables
+// Base
+$website-width: 1280px;
+$background-opacity: 0.6;
+$header-height: 4rem;
+$footer-height: 3rem;
+$nav-height: 4rem;
+$menu-speed: 0.75s;
+
+// Colours
+$color-primary-lighten-2: #41CBD2;
+$color-primary-lighten-1: #279A9F;
+$color-primary-base: #06595D;	// Main Primary color
+$color-primary-darken-1: #002A2C;
+$color-primary-darken-2: #000E0F;
+$color-secondary-lighten-2: #FFA04E;
+$color-secondary-lighten-1: #FF973E;
+$color-secondary-base: #9A4C09;	// Main Complement color
+$color-secondary-darken-1: #482100;
+$color-secondary-darken-2: #180B00;
+//$color-neutral-light: #f9fafa;
+//$color-neutral: #FFFFFF;
+//$color-neutral-dark: #353e3f;
+
+$primary: (
+        "base": #06595D,
+        "lighten-2": #41CBD2,
+        "lighten-1": #279A9F,
+        "darken-1": #002A2C,
+        "darken-2": #000E0F,
+);
+
+$secondary: (
+        "base": #9A4C09,
+        "lighten-2": #FFA04E,
+        "lighten-1": #FF973E,
+        "darken-1": #482100,
+        "darken-2": #180B00,
+);
+
+$neutral: (
+        "light": #f9fafa,
+        "dark": #353e3f
+);
+
+$white: ( "base": #ffffff );
+//$colour-neutral-light: #f9fafa;
+//$neutral-light: ( "base": $colour-neutral-light );
+//$colour-neutral-dark: #353e3f;
+//$neutral-dark: ( "base": $colour-neutral-dark );
+
+$colours: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "neutral": $neutral,
+        "white": $white
+);
+
+$color-primary-0: #06595D;	// Main Primary color */
+$color-primary-1: #41CBD2;
+$color-primary-2: #279A9F;
+$color-primary-3: #002A2C;
+$color-primary-4: #000E0F;
+
+$color-secondary-1-0: #102967;	// Main Secondary color (1) */
+$color-secondary-1-1: #5279D9;
+$color-secondary-1-2: #395AAF;
+$color-secondary-1-3: #000E30;
+$color-secondary-1-4: #000510;
+
+$color-secondary-2-0: #9A6A09;	// Main Secondary color (2) */
+$color-secondary-2-1: #FFC54E;
+$color-secondary-2-2: #FFC03E;
+$color-secondary-2-3: #483000;
+$color-secondary-2-4: #181000;
+
+$color-complement-0: #9A4C09;	// Main Complement color */
+$color-complement-1: #FFA04E;
+$color-complement-2: #FF973E;
+$color-complement-3: #482100;
+$color-complement-4: #180B00;
+
+// Background images
+$bg-thunderstorm-image: url('assets/2xx_thunderstorm.jpg');
+$bg-drizzle-image: url('assets/3xx_drizzle.jpg');
+$bg-rain-image: url('assets/5xx_rain.jpg');
+$bg-snow-image: url('assets/6xx_snow.jpg');
+$bg-atmosphere-image: url('assets/7xx_atmosphere.jpg');
+$bg-clouds-image: url('assets/80x_clouds.jpg');
+$bg-clear-image: url('assets/800_clear.jpg');
+
+// Use highlight-colour for daytime and dark-colour for nighttime
+$i-clear-sky: 'fas fa-circle';
+$i-few-clouds: 'fas fa-cloud-sun';
+$i-scattered-clouds: 'fas fa-cloud';
+$i-broken-clouds: 'fas fa-cloud-meatball';
+$i-shower-rain:'fas fa-cloud-showers-heavy';
+$i-rain: 'fas fa-cloud-rain';
+$i-thunderstorm:'fas fa-bolt';
+$i-snow: 'fas fa-snowflake';
+$i-mist: 'fas fa-smog';
+$i-map-marker: 'fas fa-map-marker-alt';
+
+// Margin and padding helper values
+$helpervalues: (0, 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5); //rem units
+$edges: (top, bottom, left, right, all);
+
+// Font size values
+$font-sizes: (2.5, 3, 3.5, 4, 4.5, 5);
+
+// Grid column and row classes
+$itemvalues: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+$axis: ('row', 'column');
+
+// Grid gap values
+$gapvalues: (0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 3.5);
+

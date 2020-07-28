@@ -21,10 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/sampledata/
-
-# Pycharm project files
-.idea
-*.iml
-out
-gen

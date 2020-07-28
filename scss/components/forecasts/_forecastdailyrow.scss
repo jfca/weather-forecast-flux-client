@@ -1,0 +1,5 @@
+.forecast-daily-row {
+  display: grid;
+  grid-template-columns: auto repeat(8, 1fr);
+  border-radius: 15px;
+}
